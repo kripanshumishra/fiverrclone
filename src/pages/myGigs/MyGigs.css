@@ -1,0 +1,70 @@
+.mygigs-header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.mygigs-table{
+    text-align: left;
+    width: 100%;
+    margin-block: 2em;
+}
+
+.mygigs-table th , .mygigs-table td , .mygis-table caption , .mygigs-header div{
+    padding: 1em;
+    text-align: left;
+}
+
+
+.mygigs-table th{
+    font-size: var(--txt-medium);
+    font-weight: 700;
+    text-transform: capitalize;
+
+}
+
+.mygigs-table thead > tr {
+    background-color: var(--clr-accent);
+}
+
+.mygigs-table tr:nth-child(even){
+    background-color: var(--clr-accent);
+}
+
+.mygigs-table tr {
+    border-top: 1px solid var(--clr-txt);
+    border-left: 1px solid var( --clr-txt );
+    border-right: 1px solid var( --clr-txt );
+}
+.mygigs-table tbody > tr:last-child{
+    border-bottom: 1px solid var(--clr-txt);
+}
+.mygigs-table img{
+    width: 4.2em;
+    height: 2.5em;
+}
+
+.mygigs-table .table-dustbin{
+    width: 1.8em;
+    height: 1.8em;
+}
+
+@media only screen and ( max-width:700px ) {
+    .mygigs-table > thead {
+        display: none;
+    }
+    .mygigs-table td{
+        display: grid;
+        grid-template-columns: 12ch auto;
+        gap: 0.3em;
+    }
+    .mygigs-table td::before{
+        content: attr(data-cell) ": ";
+        align-self: center;
+    }
+    .mygigs-table td:first-child{
+        margin-top: 1.5em;
+    }
+    .mygigs-table td:last-child{
+        margin-top: 1.5em;
+    }
+}

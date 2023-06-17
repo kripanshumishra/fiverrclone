@@ -1,0 +1,127 @@
+.popular-services{
+    padding-top: 4.3em ;
+    padding-bottom: 4.3em ;
+}
+.popular-services__heading{
+    margin-bottom: 1em;
+    font-size: var(--txt-large);
+    font-style: normal;
+}
+.popular-services__slider{
+    position: relative;
+    height: 20em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    color: #fff;
+}
+
+.popular-services__slider > header {
+    position: absolute;
+    z-index: 1001;
+    padding-top: 1.2em;
+    padding-left: 1em;
+    line-height: 2em;
+}
+.popular-services__slider > img{
+    position: absolute;
+    z-index: 1000;
+    height: 100%;
+    border-radius: 0.8em;
+}
+
+.home-selling__wrapper{
+    background-color: var(--clr-accent );
+}
+.home-selling__wrapper > section{
+    padding-block: 4.3em;
+}
+
+.home-selling-heading{
+    font-size: var(--txt-large);
+}
+.home-selling__main{
+    display: flex;
+    justify-content: space-between;
+    gap: 1em;
+    padding-top: 1.2em;
+}
+
+.home-selling__main--left{
+    flex-basis: 47%;
+}
+.home-selling-value > div {
+    max-width: 26em;
+    margin-top: 2em;
+}
+.home-selling-value h3 {
+    font-size: var(--txt-small);
+    margin-bottom: 0.8em;
+}
+
+.home-selling__main--right{
+    flex-basis: 53%;
+    display: flex;
+}
+.home-selling-brand{
+    max-width: 30em;
+    width: 100%;
+    margin-left: auto;
+    border-radius: 0.4em ;
+    object-fit: contain;
+    align-self: center;
+}
+
+
+.home-main-categories{
+    padding-block: 4.3em;
+    --cat-img-width: 2.6em;
+    --cat-img-height:2.6em ; 
+}
+
+.home-main-categories h2{
+    font-size: var(--txt-large);
+}
+
+.home-main-categories-wrapper > ul {
+    display: grid;
+    gap: 2em 1em;
+    grid-template-columns: repeat( 5 , 1fr );
+    grid-template-rows: auto;
+    padding-top: 2em;
+}
+.home-main-categories-wrapper > ul > li > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.cat-link {
+    padding: 0.5em 0.6em;
+    position: relative;
+}
+
+.cat-link ::after{
+    content: "";
+    width: 60%;
+    border-bottom: 2px solid var( --clr-light-gray );
+    position: absolute;
+    top: calc(var(--cat-img-height) + 0.5em + 0.4em);
+    left: 50%;
+    transform: translateX(-50%);
+    transition: width 0.3s ease-in-out;
+}
+
+.cat-link:hover ::after{
+    border-color: var(--clr-primary);
+    width: calc( 100% - 1em );
+}
+
+.cat-link > img {
+    margin-bottom: 1em;
+    width: var(--cat-img-width);
+    height: var(--cat-img-height);
+    margin-inline: auto;
+}
+
+

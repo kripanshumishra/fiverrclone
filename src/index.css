@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@300&family=Exo+2:ital@1&family=Pacifico&display=swap');
+
+html{
+    box-sizing: border-box;
+}
+
+* , *::after , *::before {
+    box-sizing: inherit;
+    color: inherit;
+}
+
+:root{
+    --clr-txt: #484848;
+    --clr-primary: #19a462;
+    --clr-primary-dark: #065008;
+    --clr-accent: #f1fdf7;
+    --clr-light-gray : rgba( 0 , 0 , 0 , 0.3 );
+
+
+    --ff-logo: 'Dancing Script', cursive , sans-serif;
+    --ff-serif:  serif;
+    --ff-title: 'Exo 2' , sans-serif;
+
+    --txt-xlarge: 3rem;
+    --txt-large: 2rem;
+    --txt-medium: 1.3rem;
+    --txt-small : 0.9rem;
+    --txt-xsmall: 0.75rem;
+}
+
+img{
+    display: block;
+    max-width: 100%;
+}
+
+.visually-hidden {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
+
+/* typography */
+html{
+    font-family: var(--ff-serif);
+    color: var(--clr-txt);
+    font-size:1.25rem;
+}
+h1 , h2 , h3 ,h4 , p , ul, li , html , body , hr , div, figure , fieldset , label, input , span  {
+    margin: 0;
+    padding:0;
+}
+
+h1{
+    font-size: var(--txt-xlarge);
+}
+h2 , h3 {
+    font-family: var(--ff-title);
+    line-height: 0.8;
+    word-spacing: 1px;
+}
+h2{
+    font-size: var(--txt-large);
+}
+h3{
+    font-size: var(--txt-medium);
+}
+
+p{
+    margin-bottom: 0.95em;
+}
+
+p:last-of-type{
+    margin-bottom: 0em;
+}
+
+a{
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+.text-camel-case{
+    text-transform: capitalize;
+}
+
+.text-center{
+    text-align: center;
+}
+
+.text-italic{
+    font-style: italic;
+}
+
+.object-fill {
+    object-fit: fill;
+    width: 100%;
+}
+
+
+
+
+/* Buttons */
+button{
+    background: transparent;
+}
+
+.btn{
+    padding: 0.6em 1.5em;
+    text-align: center;
+    margin: 0.5em 0;
+    border-radius: 3px;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-primary{
+    background-color: var(--clr-primary);
+    color: #fff;
+}
+.btn-primary:focus , .btn-primary:hover{
+    background-color: var(--clr-primary-dark);
+}
+.btn-accent{
+    background-color: var(--clr-accent);
+    color: #fff;
+}
+.btn-accent:focus , .btn-accent:hover{
+    background-color: var(--clr-accent-dark);
+}
+
+.btn-grp{
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* other */
+
+.container{
+    max-width: 60.75em ;
+    margin-inline: auto;
+}
+
+.inline-spacing{
+    padding-inline: 1.5em;
+}
+
+
+/* tables */
+table{
+    border-collapse: collapse;
+}

@@ -1,0 +1,111 @@
+.gig-form-page{
+    background-color: rgba(0 ,0 , 0 , 0.05);
+    padding-top: 3em;
+}
+
+.container.gig-form-container{
+    padding: 1.5em 3em;
+    max-width: 43em;
+    background-color: #fff;
+}
+
+.gig-form-wrapper{
+    margin-top: 2em;
+    font-size: var(--txt-small);
+}
+
+.gig-form label{
+    font-size: var(--txt-medium);
+    font-weight: 600;
+    margin-bottom: 1em;
+}
+
+.gig-field-wrapper{
+    display: flex;
+    gap: 1em;
+    margin-top: 2em;
+    /* justify-content: space-between; */
+}
+.gig-field--left{
+    flex-basis: 40%;
+}
+
+.gig-field--right{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.gig-field--right > textarea{
+    width: 100%;
+    font-size: inherit;
+    min-height: 5em;
+}
+
+.gig-feedback{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.gigtitle-help{
+    margin-top: 0.5em;
+    font-size: var(--txt-small);
+}
+
+.gig-field__select{
+    min-width:  10em;
+    max-width:  12em;
+    height: 2em;
+    font-size: inherit;
+}
+
+
+.gig-do-cont{
+    margin-top: 3em;
+}
+
+.gig-desc-wrap{
+    flex-basis: 50%;
+    display: flex;
+    flex-direction: column;
+}
+.gig-desc-wrap > textarea{
+    height: 100%;
+    font-size: inherit;
+}
+.gig-other-wrap{
+    flex-basis: 50%;
+    display: flex;
+    flex-direction: column;
+}
+.gig-other-wrap > div{
+    display: flex;
+    flex-direction: column;
+}
+.gig-other-wrap > div > input{
+    height: 3em;
+}
+.gig-other-wrap > div > label{
+    margin-bottom: 0.5em;
+}
+.gig-other-wrap > div:not(:first-child){
+    margin-top: 1em;
+}
+
+.gig-file > div {
+    flex-basis: 50%;
+    display: flex;
+    flex-direction: column;
+    margin-block: 1.5em;
+    font-size: inherit;
+}
+.gig-file > div > input {
+    font-size: inherit;
+}
+.gig-file legend{
+    font-size: inherit;
+    font-size: var(--txt-medium);
+    font-weight: 600;
+}

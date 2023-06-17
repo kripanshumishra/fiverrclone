@@ -1,0 +1,16 @@
+position sticky not working if parent don't have height set
+agar kisi box ke andar kebal ek he element hai jiski position sticky hai to bo work nahi karega
+refer to this 
+https://elad.medium.com/css-position-sticky-how-it-really-works-54cd01dc2d46
+
+
+ch jo unit hai vo character ke leye hai width:15ch means kebal 15 char ke barabar width
+
+
+aria-label can only be used by interactive element( like btn , link , ul , li etc ) or with landmark element ( main , header , footer , nav etc )
+
+aria-label can't be used with span and div to give div aria-label we need to define it's role to "region" . with span we may can use aria-label now 
+
+export statement in es5 and es6
+
+learn about cors and cookies what is http only cookie ??
