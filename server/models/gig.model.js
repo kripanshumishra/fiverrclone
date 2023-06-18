@@ -1,4 +1,6 @@
-import { Schema } from "mongoose";
+const { default: mongoose } = require("mongoose");
+
+const { Schema } = mongoose;
 const GigSchema = new Schema({
     userId:{
         type:Schema.Types.ObjectId,
@@ -35,7 +37,6 @@ const GigSchema = new Schema({
     },
     images:{
         types:[String],
-        required:false
     },
     shortTitle:{
         type:String,
@@ -55,7 +56,6 @@ const GigSchema = new Schema({
     }, 
     features:{
         type:[String],
-        required: false,
     },
     sales:{
         type:Number,
@@ -65,4 +65,4 @@ const GigSchema = new Schema({
     timestamps:true
 })
 
-export default mongoose.model( "Gig" , GigSchema )
+module.exports =  mongoose.model( "Gig" , GigSchema )
