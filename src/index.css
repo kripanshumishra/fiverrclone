@@ -11,6 +11,7 @@ html{
 
 :root{
     --clr-txt: #484848;
+    --clr-light-txt: #636060;
     --clr-primary: #19a462;
     --clr-primary-dark: #065008;
     --clr-accent: #f1fdf7;

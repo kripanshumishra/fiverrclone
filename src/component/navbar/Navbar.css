@@ -16,6 +16,7 @@
     background-color: #fff;
     color: var(--clr-txt);
     z-index: 1006;
+    
 }
 .active > .header{
     color: inherit;

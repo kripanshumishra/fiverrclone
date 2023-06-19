@@ -2,7 +2,7 @@ import { Schema } from "mongoose";
 
 const messageSchema = new Schema(
     {
-        userId : {
+        user: {
             type: Schema.Types.ObjectId,
             ref:"User"
         }, 
@@ -10,7 +10,7 @@ const messageSchema = new Schema(
             type:String ,
             required: true ,
         },
-        conversatioinId :{
+        conversatioin:{
             type: Schema.Types.ObjectId,
             ref:"Conversation"
         }

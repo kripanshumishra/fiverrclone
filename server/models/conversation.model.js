@@ -1,11 +1,11 @@
 import { Schema } from "mongoose";
 const ConversationSchema = new Schema (
     {
-        sellerId :{
+        seller :{
             type : Schema.Types.ObjectId, 
             ref: "User"
         },
-        BuyerId :{
+        Buyer :{
             type : Schema.Types.ObjectId, 
             ref: "User"
         },

@@ -1,26 +1,26 @@
 import "./GigCard.css";
 export default function GigCard({gig}) {
-  // console.log( gig )
+  console.log( gig )
   return (
     <div className="gigcard-container">
       <a href="#">
       <div className="gigcard-cover__img" role="region" aria-label="cover image of the gig">
         <img
-          src={gig?.img ? gig.img : ""}
-          alt=""
+          src={gig?.cover ? gig.cover : ""}
+          alt="cover"
         />
       </div>
       <div className="gigcard-info ">
         <div role="header" className="gigcard-seller">
           <figure className="gigcard-seller__brand" aria-hidden="true">
-            <img src={gig?.pp ? gig.pp : ""} alt="" />
-            <figcaption> K </figcaption>
+            {gig?.user?.img ? <img src={gig?.user.img ? gig.img : ""} alt="" /> :<></>}
+            <figcaption> {gig?.user?.username[0]} </figcaption>
           </figure>
           <h3 className="gigcard-seller__uname">
-            <span className="visually-hidden">username</span> { gig?.username ? gig.username : "user" }
+            <span className="visually-hidden">username</span> { gig?.user?.username ? gig.user.username : "user" }
           </h3>
         </div>
-        <p>I will create ai art character from your images and prompts</p>
+        <p> { gig?.desc} </p>
         <div className="gigcard-ratings" >
           <span aria-label="rating">
             <span className="gigcard-star" aria-hidden="true">
@@ -33,7 +33,7 @@ export default function GigCard({gig}) {
         </div>
         <div className="gigcard-footer">
             <span>Starting At</span>
-            <span>${gig.price}</span>
+            <span>${gig?.price}</span>
         </div>
       </div>
       </a>

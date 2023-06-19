@@ -1,0 +1,109 @@
+.login-page-wrapper{
+    background-color: var(--clr-accent);
+    padding-block: 3em;
+}
+
+.content-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content-subwrapper {
+  width: auto;
+  width: 36rem;
+  display: flex;
+  height: 25rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5em;
+  flex-direction: row-reverse;
+  text-align: left;
+  font-size: var(--txt-small);
+  box-shadow: 3px 3px 4px #aaaaaa, -3px -3px 4px #aaaaaa;
+}
+
+.content-subwrapper > div {
+    background: #fff;
+  flex-basis: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-block: 3em;
+  padding-inline: 2em;
+  border-end-start-radius: inherit;
+  border-start-start-radius: inherit;
+}
+
+.login-advertisement {
+  background: url(https://fiverr-res.cloudinary.com/npm-assets/layout-server/standard.c6d3ba7.png) !important;
+  height: 100%;
+  color: #fff;
+  background-clip: border-box;
+  background-size: cover !important;
+}
+
+.login-advertisement  h2 {
+  font-size: var(--txt-medium);
+  margin-bottom: 1.2em;
+  font-weight: 800;
+}
+.login-advertisement > div {
+  gap: 0.5em;
+  width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+.login-advertisement--list > li {
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+  margin-bottom: 0.75em;
+}
+
+.login-advertisement--list div {
+  width: 2em;
+  display: flex;
+}
+
+.login-advertisement--list li div img {
+  height: 1.3em;
+  width: 1.3em !important;
+}
+
+.login-form h2 {
+    font-size: var(--txt-medium);
+    font-weight: 800;
+    margin-bottom: 0.5em;
+}
+
+.login-form > header p {
+    color: var(--clr-light-txt);
+}
+
+.login-form > header {
+    padding-bottom: 2.5em;
+}
+
+.input-wrapper{
+    display: flex;
+    flex-direction: column;
+}
+
+.input-wrapper > label{
+    color: var(--clr-light-txt);
+}
+.input-wrapper > input{
+    margin-top: 0.65em;
+    margin-bottom: 1.7em;
+    font-size: inherit;
+    padding-inline: 0.3em;
+    min-height: 2em;
+}
+
+.login-submit-btn{
+    width: 100%;
+}

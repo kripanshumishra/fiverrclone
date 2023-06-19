@@ -2,7 +2,7 @@ const { default: mongoose } = require("mongoose");
 
 const { Schema } = mongoose;
 const GigSchema = new Schema({
-    userId:{
+    user:{
         type:Schema.Types.ObjectId,
         require:true,
         ref : "User"

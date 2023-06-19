@@ -3,7 +3,6 @@ import Slide from "../../component/slide/Slide";
 import TrustedBy from "../../component/trustedBy/TrustedBy";
 import { popularCards, mainCategories } from "../../../data/data";
 import "./Home.css";
-import GigCard from "../../component/gigcard/GigCard";
 
 export default function Home() {
   return (
@@ -102,7 +101,6 @@ export default function Home() {
             </ul>
           </div>
         </div>
-      <GigCard/>
       </section>
     </section>
   );

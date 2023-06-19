@@ -1,0 +1,9 @@
+integrate login logout to frontend ---> done 
+intergrate gigs to frontend
+complete the apis for review 
+
+
+
+// flaws
+error handling in login api 
+error handling in gigs api 

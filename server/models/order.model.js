@@ -20,12 +20,12 @@ const OrderSchema = new Schema(
       type: Number,
       required: true,
     },
-    sellerId: {
+    seller: {
       type: Schema.Types.ObjectId,
       ref: "User",
       required: true,
     },
-    buyerId: {
+    buyer: {
       type: Schema.Types.ObjectId,
       ref: "User",
       required: true,

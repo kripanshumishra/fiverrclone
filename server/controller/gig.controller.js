@@ -1,12 +1,13 @@
 const createError = require( "../utils/createError" )
 const Gig = require( "../models/gig.model" );
+const { default: mongoose } = require("mongoose");
 const createGig = async ( req , res , next  ) =>{
 
     if( ! req.isSeller ) return next(createError( 403 , "only sellers can create the gig" )) ;
 
     const newgig  = new Gig( {
         ...req.body , 
-        userId : req.userId
+        user : req.userId
     } ) ;
 
     try{
@@ -23,7 +24,7 @@ const deleteGig = async( req , res , next  ) =>{
     try {
         const gigId = req.params.id
         const gig = await Gig.findById( gigId )
-        if ( gig.userId.toString() !== req.userId.toString() ) return next( createError( 403 , "Not authorised to delete this gig " ) )
+        if ( gig.user.toString() !== req.userId.toString() ) return next( createError( 403 , "Not authorised to delete this gig " ) )
         await Gig.findByIdAndDelete( req.params.id );
         res.status( 200 ).send("deleted successfully!")
     } catch (error) {
@@ -35,7 +36,8 @@ const deleteGig = async( req , res , next  ) =>{
 const getGig = async( req , res , next  ) =>{
     const gigId = req.params.id 
     try{
-        const gig = await Gig.findById( gigId );
+        const gig = await Gig.findById( gigId ).populate( "user" , { username:1 , img:1  } );
+        console.log( gig )
         if ( !gig ) return next( createGig( 404 , 'not found' ) );
         res.status( 200  ).send( gig )
     }
@@ -50,7 +52,7 @@ const getGigs = async( req , res , next  ) =>{
     const query = req.query
     const filter = {};
     if ( "userId" in query ){
-        filter["userId"] = query.userId
+        filter["user"] = query.userId
     }
     if ( "category" in query ){
         filter["category"] = query.category
@@ -74,7 +76,8 @@ const getGigs = async( req , res , next  ) =>{
     };
 
     try {
-        const gigs = await Gig.find( filter );
+        const gigs = await Gig.find( filter ).populate( "user" , { username:1 , img:1  } );
+        console.log( gigs )
         res.status ( 200 ).send( gigs );
 
     } catch (error) {
@@ -84,4 +87,15 @@ const getGigs = async( req , res , next  ) =>{
 
 }
 
-module.exports = { createGig , deleteGig , getGig , getGigs } ; 
+// const dummy = async ( req , res, next ) =>{
+//     console.log( "came here" )
+// try {
+//     const data = await Gig.find({  user : "6490810c976cba604a4f7832" })
+//     res.send( data )}
+    
+//  catch (error) {
+//     console.log( error )
+//     next(error)
+// }}
+
+module.exports = { createGig , deleteGig , getGig , getGigs  } ; 

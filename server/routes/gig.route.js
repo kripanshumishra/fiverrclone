@@ -10,6 +10,7 @@ const { createGig , deleteGig , getGig , getGigs } = require( "../controller/gig
 
 
 
+// router.get( "/dummy" , dummy )
 router.post( "/"  , verifyToken ,  createGig );
 router.get( "/:id" , getGig )
 router.get( "/" , getGigs )

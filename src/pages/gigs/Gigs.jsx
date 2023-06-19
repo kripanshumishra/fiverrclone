@@ -1,8 +1,28 @@
 import "./Gigs.css"
 import { gigsdata } from "../../../data/data"
 import GigCard from "../../component/gigcard/GigCard"
+import makeRequest from "../../utils/makeRequest"
+import { useEffect, useState } from "react"
 
 export default function Gigs() {
+  const [ gigs , setGigs ] = useState( [] )
+  const handleGigs = async ()=>{
+    try {
+      const res = await makeRequest.get( "/gigs/" )
+      setGigs( res.data )
+      
+    } catch (error) {
+      console.log( "handleGigs()" , error );
+    }
+
+  };
+  useEffect( () => {
+       handleGigs()
+      return ()=>{
+
+      }
+  }, [])
+  
   return (
     <section className="container inline-spacing">
       <header>
@@ -14,7 +34,7 @@ export default function Gigs() {
       </div>
       <div className="gigs-wrapper">
         {
-          gigsdata.map( ( gig , ind ) => {
+          gigs.map( ( gig , ind ) => {
             return <GigCard key={ind} gig = {{...gig }} />
           } )
         }

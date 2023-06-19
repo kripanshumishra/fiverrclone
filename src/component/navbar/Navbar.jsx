@@ -16,32 +16,26 @@ function Navbar() {
 
   const { pathname } = useLocation();
 
+
   const isActive = () => {
     window.scrollY > 0 ? setActive(true) : setActive(false);
   };
 
   useEffect(() => {
-    if( pathname === "/" )
     window.addEventListener("scroll", isActive);
 
     return () => {
-      if ( pathname === "/" )
       window.removeEventListener("scroll", isActive);
     };
   }, []);
 
-  const currentUser = {
-    id: 1,
-    username: "Anna",
-    isSeller: true,
-    img:"/img/fun.jpg"
-  };
+  const currentUser = JSON.parse(localStorage.getItem( "userInfo" ))
+  console.log( pathname )
 
   return (
     <div
       className={`header-wrapper ${
-        Active || pathname !== "/" ? "active" : ""
-      }  ${pathname === "/" ? "header-sticky" : ""}`}
+        Active || pathname !== "/" ? "active" : ""} ${Active && pathname ==="/" ? "header-sticky" : ""}`}
     >
       <header className={`header container`}>
         <div className={` header-row-wrapper inline-spacing`}>
@@ -85,7 +79,7 @@ function Navbar() {
           </nav>
         </div>
         <div>
-          {Active ? (
+          {Active || pathname !== "/" ? (
             <>
               <hr />
               <nav
