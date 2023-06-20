@@ -15,7 +15,8 @@ html{
     --clr-primary: #19a462;
     --clr-primary-dark: #065008;
     --clr-accent: #f1fdf7;
-    --clr-light-gray : rgba( 0 , 0 , 0 , 0.3 );
+    --clr-light-gray : rgba( 0 , 0 , 0 , 0.5 );
+    --clr-dark : rgba( 0 , 0 , 0 , 0.8 );
 
 
     --ff-logo: 'Dancing Script', cursive , sans-serif;
@@ -23,8 +24,8 @@ html{
     --ff-title: 'Exo 2' , sans-serif;
 
     --txt-xlarge: 3rem;
-    --txt-large: 2rem;
-    --txt-medium: 1.3rem;
+    --txt-large: 1.5rem;
+    --txt-medium: 1.2rem;
     --txt-small : 0.9rem;
     --txt-xsmall: 0.75rem;
 }
@@ -126,6 +127,13 @@ button{
 }
 .btn-primary:focus , .btn-primary:hover{
     background-color: var(--clr-primary-dark);
+}
+.btn-dark{
+    background-color: var(--clr-light-gray);
+    color: #fff;
+}
+.btn-dark:focus , .btn-dark:hover{
+    background-color: var(--clr-dark);
 }
 .btn-accent{
     background-color: var(--clr-accent);

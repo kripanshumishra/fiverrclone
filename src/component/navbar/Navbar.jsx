@@ -1,6 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import "./Navbar.css";
 import { useEffect, useState } from "react";
+import Profilepicture from "../profiledisplay/Profilepicture";
 function Navbar() {
   const menu = [
     "Graphics & Design",
@@ -30,7 +31,6 @@ function Navbar() {
   }, []);
 
   const currentUser = JSON.parse(localStorage.getItem( "userInfo" ))
-  console.log( pathname )
 
   return (
     <div
@@ -56,12 +56,7 @@ function Navbar() {
                   </li>
                     <li>
                       <button className="header-userProfile" aria-label="profile button to toggle between navigation">
-                        <div>
-                        <figure aria-hidden="true" >
-                          {currentUser?.img ? <img src= { currentUser.img } alt="" />:<></>}
-                          <figcaption >K</figcaption>
-                        </figure>
-                        </div>
+                        <Profilepicture userInitial = {currentUser.username[0]}  userPP = {currentUser.img}/>
                       </button>
                     </li>
                 </>

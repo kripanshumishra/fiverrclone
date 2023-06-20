@@ -1,6 +1,5 @@
 const createError = require( "../utils/createError" )
 const Gig = require( "../models/gig.model" );
-const { default: mongoose } = require("mongoose");
 const createGig = async ( req , res , next  ) =>{
 
     if( ! req.isSeller ) return next(createError( 403 , "only sellers can create the gig" )) ;
@@ -37,7 +36,6 @@ const getGig = async( req , res , next  ) =>{
     const gigId = req.params.id 
     try{
         const gig = await Gig.findById( gigId ).populate( "user" , { username:1 , img:1  } );
-        console.log( gig )
         if ( !gig ) return next( createGig( 404 , 'not found' ) );
         res.status( 200  ).send( gig )
     }
@@ -55,7 +53,7 @@ const getGigs = async( req , res , next  ) =>{
         filter["user"] = query.userId
     }
     if ( "category" in query ){
-        filter["category"] = query.category
+        filter["category"] = {$regex : query.category , $options:"i"}
     }
     if ( "minprice" in query ){
         const pre = filter["price"]
@@ -77,7 +75,7 @@ const getGigs = async( req , res , next  ) =>{
 
     try {
         const gigs = await Gig.find( filter ).populate( "user" , { username:1 , img:1  } );
-        console.log( gigs )
+        
         res.status ( 200 ).send( gigs );
 
     } catch (error) {

@@ -1,0 +1,27 @@
+.userProfile{
+    color: #fff;
+    font-weight: 600;
+}
+.userProfile > div > figure{
+    position: relative;
+    display: flex;
+    align-items: center;    
+    justify-content: center;
+    width: var(--profile-width , 2.3em);
+    height: var(--profile-width , 2.3em);
+    background-color: blue;
+    border-radius: 50%;
+
+}
+
+.userProfile > div > figure > figcaption{
+    font-size: var(--txt-small);
+    display: block;
+    font-weight: 700;
+}
+.userProfile figure > img{
+    position: absolute;
+    object-fit: contain;
+    width: 100%;
+    border-radius: inherit;
+}

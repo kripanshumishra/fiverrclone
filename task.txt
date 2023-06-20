@@ -1,9 +1,14 @@
 integrate login logout to frontend ---> done 
-intergrate gigs to frontend
-complete the apis for review 
-
+intergrate gigs to frontend  --> done 
+complete the apis for review --> done
+20-06 design gig page --> done
+21-06 make order api  
+21-06 integrate order  
 
 
 // flaws
-error handling in login api 
-error handling in gigs api 
+error handling in login api ->
+error handling in gigs api -> filters me aria field , aria live field bagira add karni hai bas
+
+
+

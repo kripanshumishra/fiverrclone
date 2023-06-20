@@ -1,0 +1,16 @@
+.rating {
+    display: flex;
+    gap: 0.5em;
+    margin-block: 0.25em ;
+}
+
+.rating > span {
+    display: flex ;
+    gap: 0.2em;
+    align-self: center;
+}
+
+.rating-star{
+    width: var(--star-size , 0.8em);
+    height: var(--star-size , 0.8em);
+}

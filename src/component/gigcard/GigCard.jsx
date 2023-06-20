@@ -1,6 +1,5 @@
 import "./GigCard.css";
 export default function GigCard({gig}) {
-  console.log( gig )
   return (
     <div className="gigcard-container">
       <a href="#">
