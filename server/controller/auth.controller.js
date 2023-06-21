@@ -44,7 +44,6 @@ const login = async (req, res, next) => {
 
 
     const { password, ...info  } = user;
-    console.log( info )
     res.cookie( "accessToken" , token , {
         httpOnly:true,
         maxAge: 30 *24*60*60

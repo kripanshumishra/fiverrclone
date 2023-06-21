@@ -2,7 +2,8 @@ integrate login logout to frontend ---> done
 intergrate gigs to frontend  --> done 
 complete the apis for review --> done
 20-06 design gig page --> done
-21-06 make order api  
+21-06 make order api  ---> done
+21-06 make review api 
 21-06 integrate order  
 
 

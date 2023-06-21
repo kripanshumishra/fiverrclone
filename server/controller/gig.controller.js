@@ -1,4 +1,4 @@
-const createError = require( "../utils/createError" )
+const createError = require( "../utils/createError" );
 const Gig = require( "../models/gig.model" );
 const createGig = async ( req , res , next  ) =>{
 
