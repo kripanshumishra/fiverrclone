@@ -1,10 +1,14 @@
+const mongoose = require( "mongoose" );
+const { Schema } = mongoose;
+
 const ReviewSchema = new Schema ({
     gigId :{
         type : Schema.Types.ObjectId,
         required : true,
         ref:"Gig"
     },
-    user:{
+    // buyer
+    buyer:{
         type : Schema.Types.ObjectId , 
         required : true ,
         ref:"User",
@@ -22,4 +26,4 @@ const ReviewSchema = new Schema ({
     timestamps:true,
 });
 
-export default mongoose.model ( "Review" , ReviewSchema );
+module.exports =  mongoose.model ( "Review" , ReviewSchema );
