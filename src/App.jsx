@@ -10,9 +10,10 @@ import MyGigs from "./pages/myGigs/MyGigs"
 import Orders from "./pages/orders/Orders"
 import Messages from "./pages/messages/Messages"
 import Message from "./pages/message/Message"
-import Add from "./pages/add/Add"
+import Add from "./pages/gigform/Add"
 import Register from "./pages/register/Register"
 import Login from "./pages/login/Login"
+import Test from "./pages/test"
 
 // styles
 import "./App.css";
@@ -74,14 +75,21 @@ function App() {
           element: <Gig />,
         },
         {
-          path: "/register",
-          element: <Register />,
-        },
-        {
-          path: "/login",
-          element: <Login />,
-        },
+          path : "/test", 
+          element : <Test />
+        }
+        
       ],
+      
+    },
+
+    {
+      path: "/register",
+      element: <Register />,
+    },
+    {
+      path: "/login",
+      element: <Login />,
     },
     
   ]);

@@ -1,0 +1,9 @@
+.dnd-container{
+    width: 10em ;
+    height: 10em;
+    background-color: #909090;
+    /* text-align: center; */
+    color: #fff;
+    display: flex;
+    align-items: center;
+}

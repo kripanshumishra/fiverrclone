@@ -1,15 +1,20 @@
 integrate login logout to frontend ---> done 
 intergrate gigs to frontend  --> done 
 complete the apis for review --> done
-20-06 design gig page --> done
+20-06 design gig page ---> done
 21-06 make order api  ---> done
-21-06 make review api 
-21-06 integrate order  
+21-06 make review api ---> done
+21-06 make the form for signup and intergrate it with singup api    ---> done 
+
+22-06 integrate order with frontend
+22-06 make the form for gigs and intergrate it with api
+make the apis for conversation
+make api for messages
+intergrate conversation
+
 
 
 // flaws
 error handling in login api ->
 error handling in gigs api -> filters me aria field , aria live field bagira add karni hai bas
-
-
-
+error handling in signup api

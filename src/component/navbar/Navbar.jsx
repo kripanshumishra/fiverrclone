@@ -51,13 +51,13 @@ function Navbar() {
             <ul>
               {currentUser?.username ? (
                 <>
-                  <li style={{display:"flex" , alignItems:"center"}}>
+                  <li tabIndex={0} style={{display:"flex" , alignItems:"center"}}>
                     Hey! {currentUser.username}
                   </li>
                     <li>
-                      <button className="header-userProfile" aria-label="profile button to toggle between navigation">
+                      <a href="#"> <button className="header-userProfile" aria-label="profile button to toggle between navigation">
                         <Profilepicture userInitial = {currentUser.username[0]}  userPP = {currentUser.img}/>
-                      </button>
+                      </button> </a>
                     </li>
                 </>
               ) : (
@@ -84,9 +84,9 @@ function Navbar() {
                 <ul>
                   {menu.map((m, ind) => {
                     return (
-                      <a href="#" key={ind}>
-                        {m}
-                      </a>
+                      <li key={ind}><a href="#" key={ind}>
+                      {m}
+                    </a></li>
                     );
                   })}
                 </ul>

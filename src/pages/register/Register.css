@@ -1,0 +1,117 @@
+.register-page-wrapper {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.register-container {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.register {
+    display: flex;
+    height: 23.5rem;
+    width: 34rem;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5em;
+    flex-direction: row-reverse;
+    text-align: left;
+    font-size: var(--txt-small);
+    box-shadow: 3px 3px 4px #aaaaaa, -3px -3px 4px #aaaaaa;
+}
+
+.register--left {
+  flex-basis: 50%;
+  height: 100%;
+  padding-top: 1.3em;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+}
+.register--left > form {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 0.6em;
+}
+
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group:not(:last-of-type){
+    margin-bottom: 0.5em;
+}
+
+.form-group > label{
+    font: var(--txt-small);
+    color: var(--clr-light-gray);
+}
+.form-group > input{
+    font: var(--txt-medium);
+    padding-left: 0.3em;
+    height: 1.8em;
+}
+.form-group span{
+    font: var(--txt-xsmall);
+    color: red;
+}
+
+.form-inline-group{
+    display: flex;
+    gap: 1em;
+}
+
+.country-select{
+    width: 100%;
+    height: 2em;
+}
+
+
+.register--right {
+    background: url(https://fiverr-res.cloudinary.com/npm-assets/layout-server/standard.c6d3ba7.png) !important;
+    height: 100%;
+    color: #fff;
+    background-clip: border-box;
+    background-size: cover !important;
+    width: 100%;
+    flex-basis: 50%;
+    padding-top: 1.5em;
+    width: 50%;
+  
+}
+
+.toggle-btn{
+    width: 3.3em;
+    height: 1.3em;
+    background-color: rgba( 0 , 0 , 0 , 0.2 );
+}
+
+.signup-advertisement--heading{
+    margin-bottom: 1em;
+}
+
+.signup-advertisement--list > li {
+    display: flex;
+    margin-bottom: 1em;
+}
+
+.signup-advertisement--list > li img {
+    width: 1em;
+    height: 1em;
+    margin-right: 0.6em;
+}
+
+
+.required::after{
+    content: "*";
+    color: inherit;
+}

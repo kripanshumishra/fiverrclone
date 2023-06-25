@@ -8,7 +8,6 @@ const register = async (req, res, next) => {
     const {  password , username   } = req.body
     
     const user = await User.findOne( { username : username  } ) ;
-    console.log( user  )
     if ( user && user._id  ) return next( createError( 400, "user already exists!" ) );
     
 

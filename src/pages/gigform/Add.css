@@ -1,6 +1,6 @@
 .gig-form-page{
     background-color: rgba(0 ,0 , 0 , 0.05);
-    padding-top: 3em;
+    padding-block: 3em;
 }
 
 .container.gig-form-container{
@@ -108,4 +108,10 @@
     font-size: inherit;
     font-size: var(--txt-medium);
     font-weight: 600;
+}
+
+.gig-form-btn-grp{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1em ;
 }

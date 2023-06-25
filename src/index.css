@@ -10,12 +10,12 @@ html{
 }
 
 :root{
-    --clr-txt: #484848;
-    --clr-light-txt: #636060;
+    --clr-txt: #1b1a1a;
+    --clr-light-txt: #3d3c3c;
     --clr-primary: #19a462;
     --clr-primary-dark: #065008;
     --clr-accent: #f1fdf7;
-    --clr-light-gray : rgba( 0 , 0 , 0 , 0.5 );
+    --clr-light-gray : rgba(30, 30, 30, 0.9);
     --clr-dark : rgba( 0 , 0 , 0 , 0.8 );
 
 
