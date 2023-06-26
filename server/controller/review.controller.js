@@ -7,6 +7,7 @@
 const createError = require("../utils/createError");
 const Review = require("../models/review.model");
 const Gig = require("../models/gig.model");
+const { default: mongoose } = require("mongoose");
 
 const createReview = async (req, res, next) => {
   if (req.isSeller)
@@ -40,7 +41,7 @@ const createReview = async (req, res, next) => {
 
 const getReview = async (req, res, next) => {
   try {
-    const reviews = await Review.find({ gigId: req.params.gigId });
+    const reviews = await Review.find({ "gigId": req.params.gigId }).populate('buyer' , { _id:0 , password:0 });
     res.status(200).send(reviews);
   } catch (error) {
     console.log("getReview()", error);

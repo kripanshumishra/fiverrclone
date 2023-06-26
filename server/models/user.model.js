@@ -16,10 +16,11 @@ const userSchema = new Schema(
     password: {
       type: String,
       required: true,
+      select:false,
     },
     img: {
       type: String,
-      required: false,
+      required: true,
     },
     country: {
       type: String,
@@ -27,11 +28,9 @@ const userSchema = new Schema(
     },
     phone: {
       type: String,
-      required: false,
     },
     desc: {
       type: String,
-      required: false,
     },
     isSeller: {
       type: Boolean,

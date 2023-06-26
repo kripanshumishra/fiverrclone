@@ -51,7 +51,7 @@ export const popularCards = [
 
 export const mainCategories = [
   {
-    name:'graphics & design',
+    name:'graphics design',
     img:"https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/graphics-design.d32a2f8.svg"    
 
   },
@@ -61,20 +61,20 @@ export const mainCategories = [
 
   },
   {
-    name:'writing & translation',
+    name:'writing translation',
     img:"https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/writing-translation.32ebe2e.svg"    
 
   },
   {
-    name:'video & animation',
+    name:'video animation',
     img:"https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/video-animation.f0d9d71.svg"    
   },
   {
-    name:'music & audio',
+    name:'music audio',
     img:"https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/music-audio.320af20.svg" 
   },
   {
-    name:'programming & tech ',
+    name:'programming tech ',
     img:"https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/programming.9362366.svg" 
   },
   {

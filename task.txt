@@ -5,9 +5,10 @@ complete the apis for review --> done
 21-06 make order api  ---> done
 21-06 make review api ---> done
 21-06 make the form for signup and intergrate it with singup api    ---> done 
+25-06 make the form for gigs and intergrate it with api  ---> done
+26-06 Integrate add review functionality
 
 22-06 integrate order with frontend
-22-06 make the form for gigs and intergrate it with api
 make the apis for conversation
 make api for messages
 intergrate conversation

@@ -8,15 +8,38 @@ import {
   handleGigs,
   handlePriceChange,
 } from "./utils";
+import { mainCategories } from "../../../data/data";
 
 export default function Gigs() {
   const [gigs, setGigs] = useState([]);
+  const [drawerOpen, setDrawerOpen] = useState({
+    categories: false,
+    budget: false,
+    delivery: false,
+  });
   const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation();
   useEffect(() => {
-    handleGigs(setGigs, location);
-    return () => {};
+    let isMounted = true;
+    handleGigs(location).then((res) => {
+      if (isMounted) setGigs(res.data);
+    });
+    return () => {
+      isMounted = false;
+    };
   }, [searchParams]);
+  const handleDrawerState = (e) => {
+    const name = e.target.name;
+    const val = drawerOpen[name];
+    const newState = {};
+    Object.keys(drawerOpen).forEach((v) => {
+      newState[v] = false ;
+    });
+    newState[name] = !val;
+    setDrawerOpen((pre) => {
+      return newState;
+    });
+  };
 
   return (
     <section className="container inline-spacing">
@@ -25,163 +48,87 @@ export default function Gigs() {
         <p>Explore the boundaries of art and technology with fiverr</p>
       </header>
       <div className="gig-filter-header">
-        <div>
+        <div className="gig-filters-wrap">
           <button
-            className="btn gig-filter__btn"
+            className={`btn gig-filter__btn ${
+              drawerOpen["categories"] ? "gig-filter__btn--active" : ""
+            } `}
             aria-controls="category-region"
+            name="categories"
+            onClick={handleDrawerState}
           >
             Categories
           </button>
-          <ul id="category-region">
-            <li>
-              <label>
-                <input
-                  onChange={(e) => {
-                    handleCategoryChange(e, setSearchParams);
-                  }}
-                  checked={searchParams.get("category") === "ai" ? true : false}
-                  type="radio"
-                  name="category"
-                  value="ai"
-                />{" "}
-                AI{" "}
-              </label>{" "}
-            </li>
-            <li>
-              <label>
-                <input
-                  onChange={(e) => {
-                    handleCategoryChange(e, setSearchParams);
-                  }}
-                  checked={
-                    searchParams.get("category") === "wordpress" ? true : false
-                  }
-                  type="radio"
-                  name="category"
-                  value="wordpress"
-                />{" "}
-                WordPress{" "}
-              </label>
-            </li>
-            <li>
-              <label>
-                <input
-                  onChange={(e) => {
-                    handleCategoryChange(e, setSearchParams);
-                  }}
-                  checked={
-                    searchParams.get("category") === "socialmedia"
-                      ? true
-                      : false
-                  }
-                  type="radio"
-                  name="category"
-                  value="socialmedia"
-                />{" "}
-                Social Media{" "}
-              </label>
-            </li>
-            <li>
-              <label>
-                <input
-                  onChange={(e) => {
-                    handleCategoryChange(e, setSearchParams);
-                  }}
-                  checked={
-                    searchParams.get("category") === "seo" ? true : false
-                  }
-                  type="radio"
-                  name="category"
-                  value="seo"
-                />{" "}
-                SEO{" "}
-              </label>
-            </li>
-            <li>
-              <label>
-                <input
-                  onChange={(e) => {
-                    handleCategoryChange(e, setSearchParams);
-                  }}
-                  checked={
-                    searchParams.get("category") === "illustration"
-                      ? true
-                      : false
-                  }
-                  type="radio"
-                  name="category"
-                  value="illustration"
-                />{" "}
-                Illustration{" "}
-              </label>{" "}
-            </li>
-            <li>
-              <label>
-                <input
-                  onChange={(e) => {
-                    handleCategoryChange(e, setSearchParams);
-                  }}
-                  checked={
-                    searchParams.get("category") === "logodesign" ? true : false
-                  }
-                  type="radio"
-                  name="category"
-                  value="logodesign"
-                />{" "}
-                Logo Design{" "}
-              </label>
-            </li>
-            <li>
-              <label>
-                <input
-                  onChange={(e) => {
-                    handleCategoryChange(e, setSearchParams);
-                  }}
-                  checked={
-                    searchParams.get("category") === "voiceover" ? true : false
-                  }
-                  type="radio"
-                  name="category"
-                  value="voiceover"
-                />{" "}
-                Voice Over{" "}
-              </label>
-            </li>
+          <ul
+            id="category-region"
+            className={` link-drawer ${
+              drawerOpen["categories"] ? "link-drawer-isopen" : ""
+            } `}
+          >
+            {mainCategories.map((cat, ind) => {
+              return (
+                <li key={ind}>
+                  <label>
+                    <input
+                      onChange={(e) => {
+                        handleCategoryChange(e, setSearchParams);
+                      }}
+                      checked={
+                        searchParams.get("category") === cat.name ? true : false
+                      }
+                      type="radio"
+                      name="category"
+                      value={cat.name}
+                    />
+                    {cat.name}
+                  </label>{" "}
+                </li>
+              );
+            })}
           </ul>
         </div>
-        <div>
-          <button className="btn gig-filter__btn" aria-controls="budget-region">
-            {" "}
-            Budget{" "}
+        <div className="gig-filters-wrap">
+          <button
+            className={`btn gig-filter__btn ${
+              drawerOpen["budget"] ? "gig-filter__btn--active" : ""
+            }`}
+            aria-controls="budget-region"
+            onClick={handleDrawerState}
+            name="budget"
+          >
+            Budget
           </button>
-          <div role="region" id="budget-region">
+          <div
+            className={`link-drawer ${drawerOpen["budget"] ? "link-drawer-isopen" :"" } `}
+            role="region"
+            id="budget-region"
+          >
             <form
               className="filter-price-region"
               onSubmit={(e) => {
-                // e.preventDefault()
                 handlePriceChange(e, setSearchParams);
               }}
             >
               <div>
-              <div>
-                <label htmlFor="minprice">Min price</label>
-                <input
-                  type="Number"
-                  id="minprice"
-                  placeholder="Any"
-                  name="minprice"
-                />
-              </div>
+                <div>
+                  <label htmlFor="minprice">Min price</label>
+                  <input
+                    type="Number"
+                    id="minprice"
+                    placeholder="Any"
+                    name="minprice"
+                  />
+                </div>
 
-              <div>
-                <label htmlFor="maxprice">Max price</label>
-                <input
-                  type="Number"
-                  id="maxprice"
-                  placeholder="Any"
-                  name="maxprice"
-                />
-              </div>
+                <div>
+                  <label htmlFor="maxprice">Max price</label>
+                  <input
+                    type="Number"
+                    id="maxprice"
+                    placeholder="Any"
+                    name="maxprice"
+                  />
+                </div>
               </div>
 
               <hr aria-hidden="true" />
@@ -189,15 +136,21 @@ export default function Gigs() {
             </form>
           </div>
         </div>
-        <div>
+        <div className="gig-filters-wrap">
           <button
-            className="btn gig-filter__btn"
+            className={`btn gig-filter__btn ${
+              drawerOpen["delivery"] ? "gig-filter__btn--active" : ""
+            }`}
             aria-controls="delivery-region"
+            name="delivery"
+            onClick={handleDrawerState}
           >
-            {" "}
-            Delivery{" "}
+            Delivery
           </button>
-          <ul id="delivery-region">
+          <ul
+            className={`link-drawer ${drawerOpen["delivery"] ? "link-drawer-isopen" :"" } `}
+            id="delivery-region"
+          >
             <li>
               {" "}
               <label>

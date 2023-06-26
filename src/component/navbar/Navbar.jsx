@@ -2,21 +2,12 @@ import { Link, useLocation } from "react-router-dom";
 import "./Navbar.css";
 import { useEffect, useState } from "react";
 import Profilepicture from "../profiledisplay/Profilepicture";
+import { mainCategories } from "../../../data/data";
+("..");
 function Navbar() {
-  const menu = [
-    "Graphics & Design",
-    "Digital Marketing",
-    "Writing & Translation",
-    "Video & Animaation",
-    "Music & Audio",
-    "Programming & Tech",
-    "Photography",
-  ];
-
   const [Active, setActive] = useState(false);
 
   const { pathname } = useLocation();
-
 
   const isActive = () => {
     window.scrollY > 0 ? setActive(true) : setActive(false);
@@ -30,12 +21,13 @@ function Navbar() {
     };
   }, []);
 
-  const currentUser = JSON.parse(localStorage.getItem( "userInfo" ))
+  const currentUser = JSON.parse(localStorage.getItem("userInfo"));
 
   return (
     <div
       className={`header-wrapper ${
-        Active || pathname !== "/" ? "active" : ""} ${Active && pathname ==="/" ? "header-sticky" : ""}`}
+        Active || pathname !== "/" ? "active" : ""
+      } ${Active && pathname === "/" ? "header-sticky" : ""}`}
     >
       <header className={`header container`}>
         <div className={` header-row-wrapper inline-spacing`}>
@@ -51,14 +43,30 @@ function Navbar() {
             <ul>
               {currentUser?.username ? (
                 <>
-                  <li tabIndex={0} style={{display:"flex" , alignItems:"center"}}>
+                  <li
+                    tabIndex={0}
+                    style={{ display: "flex", alignItems: "center" }}
+                  >
                     Hey! {currentUser.username}
                   </li>
-                    <li>
-                      <a href="#"> <button className="header-userProfile" aria-label="profile button to toggle between navigation">
-                        <Profilepicture userInitial = {currentUser.username[0]}  userPP = {currentUser.img}/>
-                      </button> </a>
-                    </li>
+                  <li>
+                    <a href="#">
+                      <button
+                        className="header-userProfile"
+                        aria-label="profile button to toggle between navigation"
+                      >
+                        <Profilepicture
+                          userInitial={currentUser.username[0]}
+                          userPP={currentUser.img}
+                        />
+                      </button>
+                    </a>
+                    <ul className="link-drawer" >
+                      <li>Profile</li>
+                      <li>Profile</li>
+                      <li>logout</li>
+                    </ul>
+                  </li>
                 </>
               ) : (
                 <>
@@ -82,11 +90,13 @@ function Navbar() {
                 aria-label="Categories menu"
               >
                 <ul>
-                  {menu.map((m, ind) => {
+                  {mainCategories.slice(0, 8).map((m, ind) => {
                     return (
-                      <li key={ind}><a href="#" key={ind}>
-                      {m}
-                    </a></li>
+                      <li key={ind}>
+                        <Link to={"/gigs/?category=" + m.name} key={ind}>
+                          {m.name}
+                        </Link>
+                      </li>
                     );
                   })}
                 </ul>

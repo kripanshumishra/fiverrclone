@@ -11,7 +11,7 @@ export default function Home() {
       <TrustedBy />
       <section className="container popular-services">
         <h2 className="popular-services__heading">Popular Services</h2>
-        <Slide>
+        <Slide desktop={4} tablet={3}>
           {popularCards.map((card, i) => {
             return (
               <div className="popular-services__slider" key={i} >

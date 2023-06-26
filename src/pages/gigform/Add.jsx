@@ -7,6 +7,7 @@ import uploadimg from "../../utils/uploadimg"
 
 import { change_input , add_feature , remove_feature , add_images , INITIAL_STATE , gigReducer } from "../../reducers/gigReducer"
 import makeRequest from "../../utils/makeRequest";
+import { mainCategories } from "../../../data/data";
 const AboutGig = ( { handleInput } ) => {
   return (
     <>
@@ -61,8 +62,11 @@ const AboutGig = ( { handleInput } ) => {
         onChange={handleInput}
       >
         <option value={null} > Select the Category </option>
-        <option value="Graphics Design"> Graphics Design </option>
-        <option value="Content Writing"> Content Writing </option>
+        {
+          mainCategories.map( ( cat , ind ) =>{
+            return <option value={cat.name} key={ind} >{cat.name}</option>
+          } )
+        }
       </select>
       <div className="gig-feedback">
         <span aria-live="assertive" id="category-error"></span>
@@ -139,7 +143,7 @@ const GigImageUpload = ({handleImage}) => {
 export default function Add() {
   
   
-  const steps = [<AboutGig handleInput={handleInput} />, <GigFeatures  handleInput={handleInput}/> , <GigImageUpload handleImage={handleImage} />];
+  const steps = [<AboutGig handleInput={handleInput} />,<GigImageUpload handleImage={handleImage} /> , <GigFeatures  handleInput={handleInput}/> ];
 
   const [ state , dispatch ] = useReducer( gigReducer , INITIAL_STATE ) ;
   const [files , setFiles] = useState( [] )
@@ -147,13 +151,20 @@ export default function Add() {
   const handleSubmit = async ( e ) =>{
     e.preventDefault()
     if ( isLastPage() ){
+      console.log( 'state' , state )
+      const req = await makeRequest.post( "/gigs" , { ...state , cover: state["images"][0] } )
+      const res = req.data
+      console.log( res )
+      alert( "form submit successful !" )
+      return res
+    }
+    // image form page
+    if ( currentPage === totalPage-1 ){
+      
       if ( !files.length ) alert( "pls add images" )
       await handleImageSubmit()
-      const req = await makeRequest.post( "/gigs" , state )
-      const res = req.data
-      console.log( res  )
     }
-    else next()
+    next()
   }
   
   function handleInput( e ){
@@ -175,8 +186,8 @@ export default function Add() {
           }
           )
           )
-          
           add_images( images , dispatch )
+
           
         } catch (error) {
           console.log( "handleImageSubmit()" , error )

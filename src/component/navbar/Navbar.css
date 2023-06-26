@@ -45,7 +45,7 @@
 .header-primaryNavigation li{
     font-weight: 600;
 }
-.header-primaryNavigation li:not(:first-child){
+.header-primaryNavigation > ul > li:not(:first-child){
     margin-left: 1em;
 }
 

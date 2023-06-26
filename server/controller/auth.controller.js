@@ -30,7 +30,7 @@ const login = async (req, res, next) => {
   try {
     const  username   = req.body.username;
     const pass = req.body.password;
-    const user = await User.findOne( { username: username } );
+    const user = await User.findOne( { username: username } ).select("+password");
     
     if ( !user ) return next( createError( 404 , "user not found !" ) );
 

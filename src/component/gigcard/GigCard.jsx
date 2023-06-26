@@ -1,8 +1,9 @@
+import { Link } from "react-router-dom";
 import "./GigCard.css";
 export default function GigCard({gig}) {
   return (
     <div className="gigcard-container">
-      <a href="#">
+      <Link to={`/gig/${gig._id}`}>
       <div className="gigcard-cover__img" role="region" aria-label="cover image of the gig">
         <img
           src={gig?.cover ? gig.cover : ""}
@@ -35,7 +36,7 @@ export default function GigCard({gig}) {
             <span>${gig?.price}</span>
         </div>
       </div>
-      </a>
+      </Link>
     </div>
   );
 }

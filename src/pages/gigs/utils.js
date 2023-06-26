@@ -16,10 +16,11 @@ const handleDeliveryChange = ( e ,setSearchParams ) =>{
   }
 
 
-  const handleGigs = async (setGigs , location)=>{
+  const handleGigs = async ( location)=>{
     try {
       const res = await makeRequest.get( "/gigs/"+location.search )
-      setGigs( res.data )
+      return res
+      // setGigs( res.data )
       
     } catch (error) {
       console.log( "handleGigs()" , error );

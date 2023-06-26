@@ -32,6 +32,12 @@
     border-radius: inherit;
 }
 
+.gig-sample-image{
+    min-width: 20em;
+    margin: auto;
+    border-radius: inherit;
+}
+
 .gig-about__container {
     padding-block: 2em;
 }
