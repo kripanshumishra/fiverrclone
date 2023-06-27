@@ -7,7 +7,6 @@
 const createError = require("../utils/createError");
 const Review = require("../models/review.model");
 const Gig = require("../models/gig.model");
-const { default: mongoose } = require("mongoose");
 
 const createReview = async (req, res, next) => {
   if (req.isSeller)

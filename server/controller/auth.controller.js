@@ -72,4 +72,16 @@ const logout = async (req, res, next) => {
   }
 };
 
-module.exports = { register, login, logout };
+const getMe = async( req, res, next )=>{
+  console.log( req.userId , req.isSeller )
+  try {
+    const user = await ( User.findById( req.userId ) )
+    res.status( 200 ).send( user );
+  } catch (error) {
+    console.log( "getMe()" , error )
+    next( error ) ;
+  }
+
+};
+
+module.exports = { register, login, logout , getMe };

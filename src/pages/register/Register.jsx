@@ -1,11 +1,14 @@
-import { useRef } from "react";
+import { useContext, useRef } from "react";
 import "./Register.css";
 import makeRequest from "../../utils/makeRequest";
 import { useNavigate } from "react-router-dom";
+import { authContext } from "../../context/authProvider/authProvider";
 
 export default function Register() {
   const signupform = useRef();
   const navigate = useNavigate();
+  const { authData , setAuthData } = useContext( authContext );
+  if ( authData && Object.keys( authData ).length ) return navigate("/")
 
   const handleSubmit = async (e) => {
     e.preventDefault();

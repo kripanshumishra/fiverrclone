@@ -55,6 +55,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
 
@@ -68,7 +69,6 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: nowrap;
-    /* overflow: hidden; */
 }
 
 .category-menu li{
@@ -77,4 +77,8 @@
 
 .category-menu li:not(:first-child){
     margin-left: 1em;
+}
+
+.btn-grp.logout-container{
+    padding: 0;
 }

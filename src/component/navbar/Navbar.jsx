@@ -1,11 +1,13 @@
 import { Link, useLocation } from "react-router-dom";
 import "./Navbar.css";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Profilepicture from "../profiledisplay/Profilepicture";
 import { mainCategories } from "../../../data/data";
-("..");
+import { authContext } from "../../context/authProvider/authProvider";
+import makeRequest from "../../utils/makeRequest";
 function Navbar() {
   const [Active, setActive] = useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(false);
 
   const { pathname } = useLocation();
 
@@ -21,7 +23,17 @@ function Navbar() {
     };
   }, []);
 
-  const currentUser = JSON.parse(localStorage.getItem("userInfo"));
+  const { authData: currentUser, setAuthData } = useContext(authContext);
+
+  const handleLogout = async (setAuthData) => {
+    try {
+      const res = await makeRequest.post("/auth/logout");
+      alert(res.data);
+      setAuthData(null);
+    } catch (error) {
+      console.log("handleLogout()", error);
+    }
+  };
 
   return (
     <div
@@ -52,8 +64,12 @@ function Navbar() {
                   <li>
                     <a href="#">
                       <button
-                        className="header-userProfile"
+                        className="header-userProfile "
                         aria-label="profile button to toggle between navigation"
+                        aria-controls="user-profile-nav"
+                        onClick={(e) => {
+                          setDrawerOpen((pre) => !pre);
+                        }}
                       >
                         <Profilepicture
                           userInitial={currentUser.username[0]}
@@ -61,21 +77,41 @@ function Navbar() {
                         />
                       </button>
                     </a>
-                    <ul className="link-drawer" >
+                    <ul
+                      className={` link-drawer ${
+                        drawerOpen ? "link-drawer-isopen" : ""
+                      } `}
+                      id="user-profile-nav"
+                    >
                       <li>Profile</li>
                       <li>Profile</li>
-                      <li>logout</li>
+                      <hr aria-hidden="true" />
+                      <li className="btn-grp logout-container">
+                        <button
+                          className="btn btn-dark "
+                          onClick={(e) => {
+                            handleLogout(setAuthData);
+                          }}
+                        >
+                          logout
+                        </button>
+                      </li>
                     </ul>
                   </li>
                 </>
               ) : (
                 <>
-                  <li>Fiverr Business</li>
                   <li>Explore</li>
                   <li>English</li>
-                  <li>Become a Seller</li>
-                  <li>Sign in</li>
-                  <li>Join</li>
+                  <li>
+                    <Link to={"/register"}>Become a Seller</Link>
+                  </li>
+                  <li>
+                    <Link to={"/login"}>Sign in</Link>
+                  </li>
+                  <li>
+                    <Link to={"/register"}>Join</Link>
+                  </li>
                 </>
               )}
             </ul>

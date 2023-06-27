@@ -40,7 +40,7 @@ export default function Gig() {
     handlefetch(id)
       .then((data) => {
         if (isMounted) {
-          console.log("this is gig ", gig);
+          console.log("this is gig ", data);
           setGig(data);
         }
       })
@@ -67,7 +67,6 @@ export default function Gig() {
   }, []);
 
   const { id } = useParams();
-  console.log(gig);
   return (
     <section className="container inline-spacing">
       {isloading ? (
@@ -103,15 +102,20 @@ export default function Gig() {
                 className="gig-sample-images"
                 aria-label="gig sample images"
               >
+                {
+                gig.images && 
+                
                 <Slide>
-                  {gig?.images?.map((img, ind) => {
+                 { gig.images.map((img, ind) => {
                     return (
-                      <div>
+                      <div key={ind}>
                         <img className="gig-sample-image" key={ind} src={img} alt="" />
                       </div>
                     );
                   })}
                 </Slide>
+                
+                }
 
                 {/* {
            gig?.images?.map( ( img , ind ) =>{
