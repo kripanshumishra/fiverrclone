@@ -1,12 +1,10 @@
 import { useContext, useRef } from "react";
 import "./Login.css"
 import makeRequest from "../../utils/makeRequest";
-import { useNavigate } from "react-router-dom";
+import {  Navigate } from "react-router-dom";
 import { authContext } from "../../context/authProvider/authProvider";
 export default function Login() {
-  const navigate = useNavigate()
   const { authData , setAuthData } = useContext( authContext );
-  if ( authData && Object.keys(authData).length ) return navigate( "/" )
   const formRef = useRef()
   const handleLogin = async (e) =>{
     e.preventDefault() ;
@@ -18,11 +16,13 @@ export default function Login() {
        } ; 
     const res = await makeRequest.post( "/auth/login" , data )
     setAuthData( res.data );
+    console.log( "res" , res.data );  
     navigate("/");
     } catch (error) {
       console.log( "handleLogin()" , error );
     } ; 
   };
+  if ( authData && Object.keys(authData).length )  return <Navigate to={"/"} />
   return (
     <section className='login-page-wrapper'>
       <div className='container content-wrapper'> 

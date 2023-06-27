@@ -6,11 +6,11 @@ complete the apis for review --> done
 21-06 make review api ---> done
 21-06 make the form for signup and intergrate it with singup api    ---> done 
 25-06 make the form for gigs and intergrate it with api  ---> done
+make login and logout and signup perfect    ----> done ( didn't added error handlers )
+make the home page responsive ---> done
 
 todo tommorow 
-make login and logout and signup perfect
 Integrate add review functionality
-make the home page responsive
 make the gigs page responsive
 
 

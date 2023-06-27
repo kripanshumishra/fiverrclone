@@ -13,6 +13,8 @@
     margin-left: 0.5em;
     margin-right: 0.5em;
     color: #fff;
+    display: flex;
+    justify-content: center ;
 }
 
 .popular-services__slider > header {
@@ -48,6 +50,7 @@
 
 .home-selling__main--left{
     flex-basis: 47%;
+    flex: 1;
 }
 .home-selling-value > div {
     max-width: 26em;
@@ -61,6 +64,7 @@
 .home-selling__main--right{
     flex-basis: 53%;
     display: flex;
+    display: none;
 }
 .home-selling-brand{
     max-width: 30em;
@@ -84,8 +88,8 @@
 
 .home-main-categories-wrapper > ul {
     display: grid;
-    gap: 2em 1em;
-    grid-template-columns: repeat( 5 , 1fr );
+    gap: 2em 0.5em;
+    grid-template-columns: repeat( 3 , 1fr );
     grid-template-rows: auto;
     padding-top: 2em;
 }
@@ -125,3 +129,16 @@
 }
 
 
+
+@media only screen and ( min-width:700px ) {
+    .home-selling__main--left{
+        flex-basis: 47%;
+    }
+    .home-selling__main--right{
+        display: flex;
+    }
+    .home-main-categories-wrapper > ul {
+        gap: 2em 1em;
+        grid-template-columns: repeat( 5 , 1fr );
+    }
+}

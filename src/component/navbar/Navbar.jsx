@@ -117,7 +117,7 @@ function Navbar() {
             </ul>
           </nav>
         </div>
-        <div>
+        <div className="secondry-nav">
           {Active || pathname !== "/" ? (
             <>
               <hr />

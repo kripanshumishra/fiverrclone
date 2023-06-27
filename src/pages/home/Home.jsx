@@ -26,7 +26,7 @@ export default function Home() {
         </Slide>
       </section>
       <section className="home-selling__wrapper">
-        <section className="container">
+        <section className="container inline-spacing">
           <div>
             <header>
               <h2 className="text-camel-case home-selling-heading">
@@ -69,7 +69,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="home-selling__main--right">
-                <img
+                <img aria-hidden="true"
                   className="home-selling-brand"
                   src="https://images.pexels.com/photos/3184405/pexels-photo-3184405.jpeg?auto=compress&cs=tinysrgb&w=720&h=750&dpr=2"
                   alt="girl standing out in the image"

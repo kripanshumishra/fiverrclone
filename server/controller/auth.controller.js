@@ -40,18 +40,13 @@ const login = async (req, res, next) => {
         id: user._id , 
         isSeller:user.isSeller
     } , process.env.Jwt) ;
-
-
     const { password, ...info  } = user;
     res.cookie( "accessToken" , token , {
         httpOnly:true,
-        maxAge: 30 *24*60*60
+        maxAge: 30*24*60*60*1000
     } )
     .status( 200 )
     .send( info._doc )
-
-
-
   } catch (err) {
     console.log( "login()" , err );
     next( err );
@@ -73,7 +68,6 @@ const logout = async (req, res, next) => {
 };
 
 const getMe = async( req, res, next )=>{
-  console.log( req.userId , req.isSeller )
   try {
     const user = await ( User.findById( req.userId ) )
     res.status( 200 ).send( user );
