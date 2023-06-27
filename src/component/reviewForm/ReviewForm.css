@@ -1,0 +1,18 @@
+.review-form{
+    padding-top: 1em;
+    padding-bottom: 2em;
+}
+.review-form-label{
+    display: block;
+    font-size: var(--txt-medium);
+    margin-bottom: 0.5em;
+}
+
+.review-form-textarea{
+    min-height: 7em;
+    padding-left: 0.5em;
+    font-size: var(--txt-small);
+    min-width: min( 26em , 98% );
+    margin-top: 1em;
+
+}

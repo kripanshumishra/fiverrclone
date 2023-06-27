@@ -14,3 +14,6 @@ aria-label can't be used with span and div to give div aria-label we need to def
 export statement in es5 and es6
 
 learn about cors and cookies what is http only cookie ??
+
+display content 
+    when we apply display content to any div then that div is not considered in styling without changing the sementics. 

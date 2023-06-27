@@ -6,6 +6,7 @@ import makeRequest from "../../utils/makeRequest";
 import "./Gig.css";
 import { useState, useEffect } from "react";
 import Slide from "../../component/slide/Slide";
+import ReviewForm from "../../component/reviewForm/ReviewForm";
 
 const LoadingComponent = () => {
   return <p>Loading...</p>;
@@ -132,15 +133,15 @@ export default function Gig() {
                 <p>{gig.desc}</p>
               </div>
             </div>
-            <div className="user-gig-tag__cotainer">
+            <div className="user-gig-tag__container">
               {gig.features &&
                 gig.features.map((feature) => (
                   <span className="gig-tag">{feature}</span>
                 ))}
               <span className="gig-tag">Laravel framework</span>
-              {/* <span className="gig-tag">Css</span>
+              <span className="gig-tag">Css</span>
               <span className="gig-tag">Html</span>
-              <span className="gig-tag">JavaScript</span> */}
+              <span className="gig-tag">JavaScript</span>
             </div>
             <div className="gig-about-seller">
               <header>
@@ -197,6 +198,9 @@ export default function Gig() {
                   <div className="user-bio">{gig?.user?.desc}</div>
                 </div>
               </div>
+            </div>
+            <div>
+            <ReviewForm/>
             </div>
             <div>
               <header>

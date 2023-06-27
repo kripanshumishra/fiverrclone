@@ -9,10 +9,10 @@ complete the apis for review --> done
 make login and logout and signup perfect    ----> done ( didn't added error handlers )
 make the home page responsive ---> done
 make the gigs page responsive ---> done
+make gig page responsive ---> done
 
 todo tommorow 
 Integrate add review functionality
-
 
 add missing fields in add gigs 
 
