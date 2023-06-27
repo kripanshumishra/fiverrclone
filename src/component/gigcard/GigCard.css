@@ -9,7 +9,7 @@
 }
 .gigcard-cover__img > img {
     border-radius: var(--gig-card-radius);
-    max-height: 12em;
+    height: 10.75em;
     width: 100%;
     object-fit: cover;
 }

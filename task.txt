@@ -8,10 +8,10 @@ complete the apis for review --> done
 25-06 make the form for gigs and intergrate it with api  ---> done
 make login and logout and signup perfect    ----> done ( didn't added error handlers )
 make the home page responsive ---> done
+make the gigs page responsive ---> done
 
 todo tommorow 
 Integrate add review functionality
-make the gigs page responsive
 
 
 add missing fields in add gigs 

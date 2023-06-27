@@ -43,7 +43,7 @@ export default function Gigs() {
 
   return (
     <section className="container inline-spacing">
-      <header>
+      <header className="gig-page-header">
         <h2>AI Artists</h2>
         <p>Explore the boundaries of art and technology with fiverr</p>
       </header>
@@ -168,9 +168,7 @@ export default function Gigs() {
               </label>{" "}
             </li>
             <li>
-              {" "}
               <label>
-                {" "}
                 <input
                   onChange={(e) => {
                     handleDeliveryChange(e, setSearchParams);
