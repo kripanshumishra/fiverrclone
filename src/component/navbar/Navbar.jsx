@@ -101,11 +101,11 @@ function Navbar() {
                 </>
               ) : (
                 <>
-                  <li>Explore</li>
-                  <li>English</li>
-                  <li>
+                  {/* <li>Explore</li>
+                  <li>English</li> */}
+                  {/* <li>
                     <Link to={"/register"}>Become a Seller</Link>
-                  </li>
+                  </li> */}
                   <li>
                     <Link to={"/login"}>Sign in</Link>
                   </li>

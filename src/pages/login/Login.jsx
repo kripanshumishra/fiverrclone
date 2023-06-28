@@ -24,7 +24,7 @@ export default function Login() {
   };
   if ( authData && Object.keys(authData).length )  return <Navigate to={"/"} />
   return (
-    <section className='login-page-wrapper'>
+    <section className='login-page-wrapper inline-spacing'>
       <div className='container content-wrapper'> 
       <div className="content-subwrapper">
       <div className="inline-spacing login-form">

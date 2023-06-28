@@ -25,7 +25,6 @@
 
 .content-subwrapper > div {
     background: #fff;
-  flex-basis: 50%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -33,6 +32,10 @@
   padding-inline: 2em;
   border-end-start-radius: inherit;
   border-start-start-radius: inherit;
+}
+
+.content-subwrapper > div.login-advertisement{
+  display: none;
 }
 
 .login-advertisement {
@@ -106,4 +109,13 @@
 
 .login-submit-btn{
     width: 100%;
+}
+
+@media only screen and ( min-width:600px ) {
+  .content-subwrapper > div {
+  flex-basis: 50%;
+}
+.login-advertisement {
+  display: flex !important;
+}
 }

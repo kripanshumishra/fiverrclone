@@ -29,7 +29,7 @@ export default function Register() {
     }
   };
   return (
-    <div className="register-page-wrapper">
+    <div className="register-page-wrapper inline-spacing">
       <section className="container register-container">
         <div className="register">
           <div className="register--left inline-spacing">
@@ -83,7 +83,7 @@ export default function Register() {
                 <span aria-live="true" id="error-password-region"></span>
               </div>
               <div className="form-inline-group">
-                <div className="form-group">
+                <div className="form-group form-seller-checkbox">
                   <label className="required" htmlFor="isSeller">
                     want to be seller
                   </label>
@@ -98,7 +98,7 @@ export default function Register() {
                   />
                   <span aria-live="true" id="error-seller-region"></span>
                 </div>
-                <div className="form-group">
+                <div className="form-group country-select-group">
                   <label className="required" htmlFor="country">
                     country
                   </label>
