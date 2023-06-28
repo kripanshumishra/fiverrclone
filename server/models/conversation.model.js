@@ -1,13 +1,20 @@
-import { Schema } from "mongoose";
+const mongoose  = require( "mongoose" );
+const { Schema } = mongoose
 const ConversationSchema = new Schema (
-    {
+    {   id:{
+        type:String , 
+        required: true, 
+        unique : true ,
+    },
         seller :{
             type : Schema.Types.ObjectId, 
-            ref: "User"
+            ref: "User",
+            required:true
         },
-        Buyer :{
+        buyer :{
             type : Schema.Types.ObjectId, 
-            ref: "User"
+            ref: "User",
+            required: true ,
         },
         readBySeller :{
             type : Boolean, 
@@ -26,4 +33,4 @@ const ConversationSchema = new Schema (
     }
 )
 
-export default mongoose.model( "Conversation" , ConversationSchema ) ;
+module.exports =  mongoose.model( "Conversation" , ConversationSchema ) ;
