@@ -89,9 +89,7 @@ export default function MyGigs() {
                         );
                       return (
                         <td role="cell" data-cell={keyword} key={ind}>
-                          {" "}
                           <button className="btn" aria-label="delete the gig">
-                            {" "}
                             <img
                               aria-hidden="true"
                               className="table-dustbin"
