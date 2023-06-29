@@ -72,7 +72,7 @@ const getConversations = async (req, res, next) => {
   try {
     const convos = await Conversation.find({
       ...(req.isSeller ? { seller: req.userId } : { buyer: req.userId }),
-    }).sort({ updatedAt: -1 });
+    }).populate( [ { path:"buyer" , select:'username' } , { path:"seller" , select:"username" } ]  ).sort({ updatedAt: -1 });
     res.status(200).send(convos);
   } catch (error) {
     console.log("getConversations() ", error);

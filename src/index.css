@@ -28,6 +28,9 @@ html{
     --txt-medium: 1.2rem;
     --txt-small : 0.9rem;
     --txt-xsmall: 0.75rem;
+
+
+    --top-nav-height : 3rem
 }
 
 img{
@@ -51,7 +54,7 @@ html{
     color: var(--clr-txt);
     font-size:1.25rem;
 }
-h1 , h2 , h3 ,h4 , p , ul, li , html , body , hr , div, figure , fieldset , label, input , span  {
+h1 , h2 , h3 ,h4 , p , ul, li , html , body , hr , div, figure , fieldset , label, input , span   {
     margin: 0;
     padding:0;
 }
@@ -215,4 +218,8 @@ table{
 .link-drawer.link-drawer-isopen {
     opacity: 1;
     visibility: visible;
+}
+
+.d-none{
+    display: none;
 }

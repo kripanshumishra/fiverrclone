@@ -10,16 +10,19 @@ make login and logout and signup perfect    ----> done ( didn't added error hand
 make the home page responsive ---> done
 make the gigs page responsive ---> done
 make gig page responsive ---> done
+make the apis for conversation ---> done 
+make api for messages ---> done 
+intergrate conversation ---> done 
 
-todo tommorow 
+todo tommorow ( till 4-5 pm  )
+make gigs page categories more interactive by adding dynamic categories and give option to remove categories  
+complete the whole order process
 Integrate add review functionality
 
 add missing fields in add gigs 
 
 22-06 integrate order with frontend
-make the apis for conversation
-make api for messages
-intergrate conversation
+
 
 
 

@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import makeRequest from "../../utils/makeRequest";
 
-export const authContext = createContext({});
+export const authContext = createContext({isSeller: null});
 
 export default function AuthProvider({ children }) {
   const [authData, setAuthData] = useState(null);

@@ -24,11 +24,9 @@
 
 .messages-table > thead th {
     background-color: var(--clr-accent);
-    border-left: 3px solid #fff;
 }
-
-.message-table > tbody tr {
-    margin-top: 3px solid #fff;
+.messages-table > tbody tr {
+    border-top: 4px solid white
 }
 
 .messages-table img{

@@ -3,6 +3,7 @@ import Slide from "../../component/slide/Slide";
 import TrustedBy from "../../component/trustedBy/TrustedBy";
 import { popularCards, mainCategories } from "../../../data/data";
 import "./Home.css";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   return (
@@ -90,10 +91,10 @@ export default function Home() {
                 return (
                   <li key={ind}>
                     <div>
-                      <a className="cat-link" href="#">
+                      <Link className="cat-link"  to={`/gigs?category=${cat.name}`} >
                         <img aria-hidden="true" src={cat.img} alt="" />
                         <span>{cat.name}</span>
-                      </a>
+                      </Link>
                     </div>
                   </li>
                 );

@@ -1,11 +1,12 @@
 import { useContext, useRef } from "react";
 import "./Login.css"
 import makeRequest from "../../utils/makeRequest";
-import {  Navigate } from "react-router-dom";
+import {  Navigate, useNavigate } from "react-router-dom";
 import { authContext } from "../../context/authProvider/authProvider";
 export default function Login() {
   const { authData , setAuthData } = useContext( authContext );
   const formRef = useRef()
+  const navigate = useNavigate()
   const handleLogin = async (e) =>{
     e.preventDefault() ;
     try {

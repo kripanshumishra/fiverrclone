@@ -39,14 +39,14 @@ function Navbar() {
     <div
       className={`header-wrapper ${
         Active || pathname !== "/" ? "active" : ""
-      } ${Active && pathname === "/" ? "header-sticky" : ""}`}
+      } `}
     >
       <header className={`header container`}>
-        <div className={` header-row-wrapper inline-spacing`}>
+        <div className={`top-nav header-row-wrapper inline-spacing`}>
           <div>
-            <a className="brand " href="#">
+            <Link className="brand " to={"/"}>
               Fiverr <span className="brand-dot">.</span>
-            </a>
+            </Link>
           </div>
           <nav
             className="header-primaryNavigation"
@@ -84,7 +84,7 @@ function Navbar() {
                       id="user-profile-nav"
                     >
                       <li>Profile</li>
-                      <li>Profile</li>
+                      <li><Link to={"/messages"}> messages </Link></li>
                       <hr aria-hidden="true" />
                       <li className="btn-grp logout-container">
                         <button
@@ -117,7 +117,7 @@ function Navbar() {
             </ul>
           </nav>
         </div>
-        <div className="secondry-nav">
+        <div className={`secondry-nav ${pathname !=="/" ? "d-none" : ""}`}>
           {Active || pathname !== "/" ? (
             <>
               <hr />
