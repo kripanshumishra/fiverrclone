@@ -1,4 +1,5 @@
-import { Schema } from "mongoose";
+const mongoose = require( "mongoose" );
+const { Schema } = mongoose;
 
 const messageSchema = new Schema(
     {
@@ -10,7 +11,7 @@ const messageSchema = new Schema(
             type:String ,
             required: true ,
         },
-        conversatioin:{
+        conversation:{
             type: Schema.Types.ObjectId,
             ref:"Conversation"
         }
@@ -19,4 +20,4 @@ const messageSchema = new Schema(
     }
 )
 
-export default mongoose.model ( "Message" , messageSchema )
+module.exports =  mongoose.model ( "Message" , messageSchema )
