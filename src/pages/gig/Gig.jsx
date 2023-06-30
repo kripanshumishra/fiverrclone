@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Profilepicture from "../../component/profiledisplay/Profilepicture";
 import Rating from "../../component/rating/Rating";
 import Review from "../../component/review/Review";
@@ -247,7 +247,9 @@ export default function Gig() {
             <div>
               <form>
                 <div className="btn-grp">
+                  <Link to={`/pay/${gig._id}`}>
                   <button className="btn btn-dark"> Continue </button>
+                  </Link>
                 </div>
               </form>
             </div>

@@ -24,6 +24,8 @@ import {
   RouterProvider,
   Outlet
 } from "react-router-dom";
+import Success from "./pages/success/Success";
+import Pay from "./pages/pay/Pay";
 
 
 function App() {
@@ -73,6 +75,14 @@ function App() {
         {
           path: "/gig/:id",
           element: <Gig />,
+        },
+        {
+          path: "/success",
+          element: <Success />,
+        },
+        {
+          path: "/pay/:id",
+          element: <Pay />,
         },
         {
           path : "/test", 

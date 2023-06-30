@@ -15,8 +15,8 @@ make api for messages ---> done
 intergrate conversation ---> done 
 
 todo tommorow ( till 4-5 pm  )
-make gigs page categories more interactive by adding dynamic categories and give option to remove categories  
 complete the whole order process
+make gigs page categories more interactive by adding dynamic categories and give option to remove categories  
 Integrate add review functionality
 
 add missing fields in add gigs 

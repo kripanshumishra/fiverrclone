@@ -3,16 +3,11 @@ const Conversation = require("../models/conversation.model");
 
 const createConversation = async (req, res, next) => {
   const isSeller = req.isSeller;
-  let buyerId, sellerId;
-  if (isSeller) {
-    sellerId = req.userId;
-    buyerId = req.body.to;
-  } else {
-    buyerId = req.userId;
-    sellerId = req.body.to;
-  }
+  const { buyerId , sellerId } = req.body;
+
+
   // seller id will be prefix always
-  const conversationId = sellerId + buyerId;
+  const conversationId = sellerId + buyerId ;
 
   const newconversation = new Conversation({
     id: conversationId,
@@ -23,6 +18,9 @@ const createConversation = async (req, res, next) => {
   });
 
   try {
+    console.log( sellerId , buyerId , req.userId )
+    // console.log( typeof( sellerId ) , typeof( buyerId ) , typeof( req.userId ) )
+    if ( sellerId.toString(  ) !== req.userId.toString(  ) && buyerId.toString() !== req.userId.toString() ) return next ( createError( 401 , "Not authenticated" ) ) ;
     const savedconvo = await newconversation.save();
     res.status(201).send(savedconvo);
   } catch (error) {
@@ -59,7 +57,7 @@ const getOneConversation = async (req, res, next) => {
     });
     console.log(conversation);
     if (!conversation || !Object.keys(conversation).length)
-      next(createError(404, "conversation not found!"));
+      return next(createError(404, "conversation not found!"));
 
     res.status(200).send(conversation);
   } catch (error) {
