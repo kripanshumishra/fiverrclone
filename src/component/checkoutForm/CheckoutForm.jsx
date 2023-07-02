@@ -48,11 +48,19 @@ export default function CheckoutForm() {
     }
 
     setIsLoading(true);
+    let succesUrl ;
+    if(import.meta.env.MODE === "development"){
+      succesUrl = import.meta.env.VITE_DEVELOPMENT_URL
+      }
+      else{
+      //use .env variables
+      succesUrl = import.meta.env.VITE_PRODUCTION_URL
+      }
     const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
-        return_url: "http://localhost:5173/success",
+        return_url: succesUrl,
       },
     });
     // This point will only be reached if there is an immediate error when

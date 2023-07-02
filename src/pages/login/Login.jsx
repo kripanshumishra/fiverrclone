@@ -1,72 +1,103 @@
 import { useContext, useRef } from "react";
-import "./Login.css"
+import "./Login.css";
 import makeRequest from "../../utils/makeRequest";
-import {  Navigate, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate, useSearchParams } from "react-router-dom";
 import { authContext } from "../../context/authProvider/authProvider";
 export default function Login() {
-  const { authData , setAuthData } = useContext( authContext );
-  const formRef = useRef()
-  const navigate = useNavigate()
-  const handleLogin = async (e) =>{
-    e.preventDefault() ;
+  const { authData, setAuthData } = useContext(authContext);
+  const formRef = useRef();
+  const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const handleLogin = async (e) => {
+    e.preventDefault();
     try {
-      let formdata = new FormData( formRef.current ) 
-      const data  = { 
-        "username" : formdata.get( "username" ) , 
-        "password" : formdata.get( "password" )
-       } ; 
-    const res = await makeRequest.post( "/auth/login" , data )
-    setAuthData( res.data );
-    console.log( "res" , res.data );  
-    navigate("/");
+      let formdata = new FormData(formRef.current);
+      const data = {
+        username: formdata.get("username"),
+        password: formdata.get("password"),
+      };
+      const res = await makeRequest.post("/auth/login", data);
+      setAuthData(res.data);
+      let redirect_uri = "/";
+      if (searchParams.get("redirect") && searchParams.get("redirect").length) {
+        redirect_uri = searchParams.get("redirect");
+      }
+      navigate(redirect_uri);
     } catch (error) {
-      console.log( "handleLogin()" , error );
-    } ; 
+      console.log("handleLogin()", error);
+    }
   };
-  if ( authData && Object.keys(authData).length )  return <Navigate to={"/"} />
+  if (authData && Object.keys(authData).length) {
+    let redirect_uri = "/";
+    if (searchParams.get("redirect")) {
+      redirect_uri = searchParams.get("redirect");
+    }
+    return <Navigate to={redirect_uri} />;
+  }
   return (
-    <section className='login-page-wrapper inline-spacing'>
-      <div className='container content-wrapper'> 
-      <div className="content-subwrapper">
-      <div className="inline-spacing login-form">
-        <header>
-        <h2>Sign in to your account</h2>
-        <p>Don't have and account ?</p>
-        </header>
-        <form ref={formRef} onSubmit={handleLogin}>
-          <div className="input-wrapper">
-            <label htmlFor='username'>Enter your username</label>
-            <input type='text' id= "username" placeholder='eg. abc' name="username" />
+    <section className="login-page-wrapper inline-spacing">
+      <div className="container content-wrapper">
+        <div className="content-subwrapper">
+          <div className="inline-spacing login-form">
+            <header>
+              <h2>Sign in to your account</h2>
+              <p>Don't have and account ?</p>
+            </header>
+            <form ref={formRef} onSubmit={handleLogin}>
+              <div className="input-wrapper">
+                <label htmlFor="username">Enter your username</label>
+                <input
+                  type="text"
+                  id="username"
+                  placeholder="eg. abc"
+                  name="username"
+                />
+              </div>
+              <div className="input-wrapper">
+                <label htmlFor="password">Enter your password </label>
+                <input
+                  type="password"
+                  id="password"
+                  placeholder="password"
+                  name="password"
+                />
+              </div>
+              <button
+                type="submit"
+                className="btn btn-primary login-submit-btn"
+              >
+                Submit
+              </button>
+              <div> Don't have account <Link style={{cursor:"pointer" , textDecoration : "underline" , color : "blue" , marginLeft : "0.3em" }} to={'/register'}> click here </Link></div>
+            </form>
           </div>
-          <div className="input-wrapper">
-          <label htmlFor='password'>Enter your password </label>
-            <input type='password' id= "password" placeholder='password' name="password" />
+          <div className="login-advertisement inline-spacing">
+            <header>
+              <h2>Success starts here</h2>
+            </header>
+            <ul className="login-advertisement--list">
+              <li>
+                <div aria-hidden="true">
+                  <img src="/img/check.png" alt="" />
+                </div>
+                Over 600 categories
+              </li>
+              <li>
+                <div aria-hidden="true">
+                  <img src="/img/check.png" alt="" />
+                </div>
+                Pay per project, not per hour
+              </li>
+              <li>
+                <div aria-hidden="true">
+                  <img src="/img/check.png" alt="" />
+                </div>
+                Access to talent and businesses across the globe
+              </li>
+            </ul>
           </div>
-          <button type="submit" className="btn btn-primary login-submit-btn">Submit</button>
-        </form>
-      </div>
-      <div className="login-advertisement inline-spacing">
-        <header>
-        <h2>Success starts here</h2>
-        </header>
-        <ul className="login-advertisement--list">
-          <li>
-            <div aria-hidden="true"><img src="/img/check.png" alt=""/></div>
-            Over 600 categories
-          </li>
-          <li>
-            <div aria-hidden="true"><img src="/img/check.png" alt=""/></div>
-            Pay per project, not per hour
-          </li>
-          <li>
-            <div aria-hidden="true"><img src="/img/check.png" alt=""/></div>
-            Access to talent and businesses across the globe
-          </li>
-        </ul>
-       </div>
-      </div>
-
+        </div>
       </div>
     </section>
   );
-};
+}

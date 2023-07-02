@@ -13,9 +13,13 @@ make gig page responsive ---> done
 make the apis for conversation ---> done 
 make api for messages ---> done 
 intergrate conversation ---> done 
+complete the whole order process --->done 
+
+todo today :
+    make routing perfect 
+    deploy api's and frontend 
 
 todo tommorow ( till 4-5 pm  )
-complete the whole order process
 make gigs page categories more interactive by adding dynamic categories and give option to remove categories  
 Integrate add review functionality
 

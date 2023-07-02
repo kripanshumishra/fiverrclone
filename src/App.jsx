@@ -4,16 +4,16 @@ import Footer from "./component/footer/Footer";
 
 // pages import
 import Home from "./pages/home/Home";
-import Gigs from "./pages/gigs/Gigs"
-import Gig from "./pages/gig/Gig"
-import MyGigs from "./pages/myGigs/MyGigs"
-import Orders from "./pages/orders/Orders"
-import Messages from "./pages/messages/Messages"
-import Message from "./pages/message/Message"
-import Add from "./pages/gigform/Add"
-import Register from "./pages/register/Register"
-import Login from "./pages/login/Login"
-import Test from "./pages/test"
+import Gigs from "./pages/gigs/Gigs";
+import Gig from "./pages/gig/Gig";
+import MyGigs from "./pages/myGigs/MyGigs";
+import Orders from "./pages/orders/Orders";
+import Messages from "./pages/messages/Messages";
+import Message from "./pages/message/Message";
+import Add from "./pages/gigform/Add";
+import Register from "./pages/register/Register";
+import Login from "./pages/login/Login";
+// import Test from "./pages/test"
 
 // styles
 import "./App.css";
@@ -22,11 +22,16 @@ import "./App.css";
 import {
   createBrowserRouter,
   RouterProvider,
-  Outlet
+  Outlet,
+  useNavigate,
+  useLocation,
+  useSearchParams,
+  Navigate,
 } from "react-router-dom";
 import Success from "./pages/success/Success";
 import Pay from "./pages/pay/Pay";
-
+import { useContext } from "react";
+import { authContext } from "./context/authProvider/authProvider";
 
 function App() {
   const Layout = () => {
@@ -38,7 +43,19 @@ function App() {
       </div>
     );
   };
-
+  const PersistedUser = () => {
+    const location = useLocation();
+    const authData = useContext(authContext)?.authData;
+    let login = (authData?.username && authData?.username.length > 0) || false;
+    if (!login) {
+      let redirect_uri = "/login";
+      if (location?.pathname && location.pathname.length > 0) {
+        redirect_uri += "?redirect=" + location.pathname;
+      }
+      return <Navigate to={redirect_uri} />;
+    }
+    return <Layout />;
+  };
   const router = createBrowserRouter([
     {
       path: "/",
@@ -53,9 +70,21 @@ function App() {
           element: <Gigs />,
         },
         {
-          path: "/myGigs",
-          element: <MyGigs />,
+          path: "/gig/:id",
+          element: <Gig />,
         },
+      ],
+    },
+
+    {
+      path: "/",
+      element: <PersistedUser />,
+      children: [
+        {
+          path: "/fu",
+          element: <div>fun</div>,
+        },
+
         {
           path: "/orders",
           element: <Orders />,
@@ -68,14 +97,7 @@ function App() {
           path: "/message/:id",
           element: <Message />,
         },
-        {
-          path: "/add",
-          element: <Add />,
-        },
-        {
-          path: "/gig/:id",
-          element: <Gig />,
-        },
+
         {
           path: "/success",
           element: <Success />,
@@ -85,12 +107,14 @@ function App() {
           element: <Pay />,
         },
         {
-          path : "/test", 
-          element : <Test />
-        }
-        
+          path: "/myGigs",
+          element: <MyGigs />,
+        },
+        {
+          path: "/add",
+          element: <Add />,
+        },
       ],
-      
     },
 
     {
@@ -101,7 +125,6 @@ function App() {
       path: "/login",
       element: <Login />,
     },
-    
   ]);
 
   return <RouterProvider router={router} />;

@@ -1,7 +1,7 @@
 import { useContext, useRef } from "react";
 import "./Register.css";
 import makeRequest from "../../utils/makeRequest";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { authContext } from "../../context/authProvider/authProvider";
 
 export default function Register() {
@@ -127,6 +127,8 @@ export default function Register() {
                   submit{" "}
                 </button>
               </div>
+
+              <div>Already have account <Link style={{cursor:"pointer" , textDecoration : "underline" , color : "blue" , marginLeft : "0.3em" }} to={'/login'}> click here </Link></div>
             </form>
           </div>
           <div className="register--right inline-spacing">
