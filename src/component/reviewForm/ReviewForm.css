@@ -8,6 +8,17 @@
     margin-bottom: 0.5em;
 }
 
+.review-form-select{
+    min-width: 12em;
+    height: 2.5em;
+    margin-bottom: 2em;
+}
+
+.review-form-select > option { 
+    font-size: var(--txt-small);
+    text-align: center;
+}
+
 .review-form-textarea{
     min-height: 7em;
     padding-left: 0.5em;
@@ -16,3 +27,4 @@
     margin-top: 1em;
 
 }
+

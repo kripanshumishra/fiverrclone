@@ -21,7 +21,7 @@ export default function Review({review}) {
           <p>{review?.buyer?.country}</p>
         </div>
       </header>
-      <Rating stars={review?.stars} />
+      <Rating stars={review?.star || 0 } />
       <p className="review-text">{review?.desc}
       </p>
     </section>

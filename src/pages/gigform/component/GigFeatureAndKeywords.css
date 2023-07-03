@@ -1,0 +1,31 @@
+.feature-wrapper{
+    display: flex;
+    gap: 2em;
+    margin-top: 1em;
+    margin-bottom: 2rem;
+}
+
+.feature--left{
+    display: flex;
+    flex-direction: column;
+    flex-basis: 45% ;
+}
+
+.feature--right{
+    display: flex;
+    flex-direction: column;
+    flex:1 ;
+}
+.feature-input{
+    display: flex;
+    gap: 1em;
+    height: 100%;
+    align-items: center;
+    width: 100%;
+    flex: 1;
+}
+.feature-input>input{
+    height: 2rem;
+    padding: 0.3em;
+    flex: 1;
+}

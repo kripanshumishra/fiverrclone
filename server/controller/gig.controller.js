@@ -3,7 +3,6 @@ const Gig = require( "../models/gig.model" );
 const createGig = async ( req , res , next  ) =>{
 
     if( ! req.isSeller ) return next(createError( 403 , "only sellers can create the gig" )) ;
-    // console.log( req.body )
     const newgig  = new Gig( {
         ...req.body , 
         user : req.userId
@@ -25,7 +24,7 @@ const deleteGig = async( req , res , next  ) =>{
         const gig = await Gig.findById( gigId )
         if ( gig.user.toString() !== req.userId.toString() ) return next( createError( 403 , "Not authorised to delete this gig " ) )
         await Gig.findByIdAndDelete( req.params.id );
-        res.status( 200 ).send("deleted successfully!")
+        res.status( 200 ).send(gigId)
     } catch (error) {
         console.log( "deleteGig()" , error );
         next( error );
@@ -35,9 +34,8 @@ const deleteGig = async( req , res , next  ) =>{
 const getGig = async( req , res , next  ) =>{
     const gigId = req.params.id 
     try{
-        const gig = await Gig.findById( gigId ).populate( "user" , { _id:0  } );
-        console.log( gig  )
-        if ( !gig ) return next( createGig( 404 , 'not found' ) );
+        const gig = await Gig.findById( gigId ).populate( "user"  );
+        if ( !gig ) return next( createError( 404 , 'not found' ) );
         res.status( 200  ).send( gig )
     }
     catch( err ){

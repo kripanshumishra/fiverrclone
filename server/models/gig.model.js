@@ -38,14 +38,6 @@ const GigSchema = new Schema({
     images:{
         type:[String],
     },
-    shortTitle:{
-        type:String,
-        required:true,
-    }, 
-    shortDesc:{
-        type: String , 
-        required:true,
-    },
     deliveryTime:{
         type:Number, 
         required:true

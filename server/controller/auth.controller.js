@@ -7,6 +7,7 @@ const register = async (req, res, next) => {
   try { 
     let {  password , username   } = req.body
     username = username.trim()
+    delete req.body["total_orders"] ;
     
     const user = await User.findOne( { username : username  } ) ;
     if ( user && user._id  ) return next( createError( 400, "user already exists!" ) );

@@ -11,6 +11,8 @@ const Gig = require("../models/gig.model");
 const createReview = async (req, res, next) => {
   if (req.isSeller)
     return next(createError(403, " only buyers can create review"));
+  if (!req.body.desc || !req.body.star )
+    return next(createError(401, "stars and review both must be filled"));
 
   try {
     const review = await Review.find({
@@ -31,6 +33,7 @@ const createReview = async (req, res, next) => {
     await Gig.findByIdAndUpdate(req.body.gigId, {
       $inc: { totalStars: req.body.star, starFrequency: 1 },
     });
+    await savedReview.populate("buyer" ,  );
     res.status(201).send(savedReview);
   } catch (error) {
     console.log("createReview()", error);
@@ -40,7 +43,10 @@ const createReview = async (req, res, next) => {
 
 const getReview = async (req, res, next) => {
   try {
-    const reviews = await Review.find({ "gigId": req.params.gigId }).populate('buyer' , { _id:0 , password:0 });
+    const reviews = await Review.find({ gigId: req.params.gigId }).populate(
+      "buyer",
+      { _id: 0, password: 0 }
+    );
     res.status(200).send(reviews);
   } catch (error) {
     console.log("getReview()", error);

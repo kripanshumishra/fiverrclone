@@ -55,7 +55,6 @@ export default function Message() {
   
 
   return (
-    <div className="message-page-container">
       <div className="container" >
       <section className="message-page-wrapper ">
       <header className="message-page-header">
@@ -93,7 +92,6 @@ export default function Message() {
         </form>
       </div>
     </section>
-    </div>
     </div>
   )
 }

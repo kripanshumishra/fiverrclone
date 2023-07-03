@@ -1,12 +1,9 @@
 const INITIAL_STATE = {
-    userId: JSON.parse(localStorage.getItem("currentUser"))?._id,
     title: "",
     category: "",
     cover: "",
     images: [],
     desc: "",
-    shortTitle: "this is short title",
-    shortDesc: "this is short desc",
     deliveryTime: 0,
     revisionNumber: 0,
     features: [],
@@ -43,6 +40,10 @@ const gigReducer = ( state , action ) =>{
                     ( feature ) => feature !== action.payload
                  )
             };
+        case "RESET_INPUTS":
+            return {
+                ...INITIAL_STATE
+            }
         default :
             throw new Error("no such action allowed!")  
     }
@@ -53,6 +54,7 @@ const Actions  = {
     add_images : "ADD_IMAGES" , 
     add_feature : "ADD_FEATURE" , 
     remove_feature : "REMOVE_FEATURE" , 
+    reset_inputs : "RESET_INPUTS"
 }
 
 const change_input = ( name , value  , dispach ) =>{
@@ -70,5 +72,8 @@ const add_feature = ( feature , dispach ) =>{
 const remove_feature = ( feature , dispach ) =>{
     dispach( {type:Actions.remove_feature , payload : feature} )
 }
+const reset_inputs = ( dispatch ) =>{
+    return dispatch({ type : Actions.reset_inputs })
+}
 
-export { change_input , add_feature , remove_feature , add_images , INITIAL_STATE , gigReducer } ; 
+export { change_input , add_feature , remove_feature , add_images , INITIAL_STATE , gigReducer , reset_inputs } ; 

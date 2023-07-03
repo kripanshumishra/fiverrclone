@@ -4,6 +4,7 @@ import makeRequest from "../../utils/makeRequest";
 import { authContext } from "../../context/authProvider/authProvider";
 import moment from "moment/moment";
 import { Link, useNavigate } from "react-router-dom";
+import handleConversation from "../../utils/handleConversation";
 
 export default function Orders() {
   const userData = useContext(authContext).authData;
@@ -40,28 +41,7 @@ export default function Orders() {
     }
   }
 
-  const handleConversation = async ( seller , buyer  ) =>{
-    
-    // conversation id format seller id + buyer id 
-
-     const id = seller + buyer ;
-    try {
-
-      const req = await makeRequest.get( `/conversations/${id}` );
-      const data = req.data ;
-      navigate( `/message/${id}` ) ;
-    } catch (error) {
-       if( error?.response.status === 404  ){
-        const newconversation = await makeRequest.post ( '/conversations/' , {
-          sellerId : seller , 
-          buyerId : buyer
-        } );
-        const newconversationdata = newconversation.data;
-        navigate( `/message/${newconversationdata.id}` )
-       }
-      else console.log( "handleConversation()" , error );
-    }
-  }
+  
 
   useEffect(() => {
     let isMounted = true ;
@@ -141,7 +121,7 @@ export default function Orders() {
                           return (
                             <td role="cell" data-cell={keyw} key={ind}>
                               <button onClick={(e)=>{
-                                handleConversation( item.seller , item.buyer  )
+                                handleConversation( item.seller , item.buyer , navigate  )
                               }} style={{maxWidth:"13em"}} className="btn btn-dark" aria-label="delete the gig">
                                 contact
                               </button>

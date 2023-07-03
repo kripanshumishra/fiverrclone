@@ -1,12 +1,15 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Profilepicture from "../../component/profiledisplay/Profilepicture";
 import Rating from "../../component/rating/Rating";
 import Review from "../../component/review/Review";
 import makeRequest from "../../utils/makeRequest";
 import "./Gig.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Slide from "../../component/slide/Slide";
 import ReviewForm from "../../component/reviewForm/ReviewForm";
+import handleConversation from "../../utils/handleConversation";
+import { authContext } from "../../context/authProvider/authProvider";
+import moment from "moment";
 
 const LoadingComponent = () => {
   return <p>Loading...</p>;
@@ -16,6 +19,9 @@ export default function Gig() {
   const [isloading, setIsLoading] = useState(false);
   const [gig, setGig] = useState({});
   const [reviews, setReviews] = useState([]);
+  const navigate = useNavigate();
+  const { id } = useParams();
+  const currentUser = useContext(authContext)?.authData;
   const handlefetch = async (id) => {
     try {
       const res = (await makeRequest(`/gigs/${id}`)).data;
@@ -41,7 +47,6 @@ export default function Gig() {
     handlefetch(id)
       .then((data) => {
         if (isMounted) {
-          console.log("this is gig ", data);
           setGig(data);
         }
       })
@@ -67,7 +72,6 @@ export default function Gig() {
     };
   }, []);
 
-  const { id } = useParams();
   return (
     <section className="container inline-spacing">
       {isloading ? (
@@ -103,20 +107,22 @@ export default function Gig() {
                 className="gig-sample-images"
                 aria-label="gig sample images"
               >
-                {
-                gig.images && 
-                
-                <Slide>
-                 { gig.images.map((img, ind) => {
-                    return (
-                      <div key={ind}>
-                        <img className="gig-sample-image" key={ind} src={img} alt="" />
-                      </div>
-                    );
-                  })}
-                </Slide>
-                
-                }
+                {gig.images && (
+                  <Slide>
+                    {gig.images.map((img, ind) => {
+                      return (
+                        <div key={ind}>
+                          <img
+                            className="gig-sample-image"
+                            key={ind}
+                            src={img}
+                            alt=""
+                          />
+                        </div>
+                      );
+                    })}
+                  </Slide>
+                )}
 
                 {/* {
            gig?.images?.map( ( img , ind ) =>{
@@ -150,7 +156,7 @@ export default function Gig() {
               <div className="gig-about-user">
                 <div>
                   <Profilepicture
-                    userInitial={gig?.user?.username}
+                    userInitial={gig?.user?.username[0]}
                     userPP={gig?.user?.img}
                   />
                 </div>
@@ -166,7 +172,24 @@ export default function Gig() {
                     <Rating stars={4} />
                   </div> */}
                   <div className="gig-about-user--contactme">
-                    <a className="btn gig-about-user--contactme">contact me </a>
+                    {currentUser?.isSeller === false ? (
+                      <button
+                        onClick={() => {
+                          handleConversation(
+                            currentUser?._id,
+                            gig?.user?._id,
+                            navigate
+                          );
+                        }}
+                        className="btn gig-about-user--contactme"
+                        aria-label="contact with this seller"
+                      >
+                        {" "}
+                        Contact me{" "}
+                      </button>
+                    ) : (
+                      <></>
+                    )}
                   </div>
                 </div>
               </div>
@@ -179,15 +202,15 @@ export default function Gig() {
                     </div>
                     <div className="user-info__block">
                       <p>Member Since</p>
-                      <p>{gig?.user?.createdAt}</p>
+                      <p>{ moment(gig?.user?.createdAt).fromNow() }</p>
                     </div>
                     {/* <div className="user-info__block">
                       <p>Avg. response Time</p>
                       <p>4 hours</p>
                     </div> */}
                     <div className="user-info__block">
-                      <p>From</p>
-                      <p>Usa</p>
+                      <p>Total Orders</p>
+                      <p>{gig?.user?.total_orders || 0 }</p>
                     </div>
                     <div className="user-info__block">
                       <p>last delivery</p>
@@ -199,9 +222,17 @@ export default function Gig() {
                 </div>
               </div>
             </div>
-            <div>
-            <ReviewForm/>
+            
+            {
+              currentUser?.isSeller
+              ?
+              <></>
+              :
+              <div>
+              <ReviewForm gigId={id} setReviews = {setReviews} />
             </div>
+              
+            }
             <div>
               <header>
                 <h2>What people think about this seller</h2>
@@ -217,10 +248,9 @@ export default function Gig() {
             </header>
             <div>
               <div className="gig-side-card__price">
-                <p> {gig.shortTitle}</p>
-                <p>$59.99</p>
+                <p> price </p>
+                <p>$ {gig.price}</p>
               </div>
-              <p className="gig-side-card__short-desc">{gig.shortDesc}</p>
               <div className="gig-special-feature">
                 <span className="gig-features">
                   <img aria-hidden="true" src="/img/clock.png" alt="" />{" "}
@@ -233,25 +263,27 @@ export default function Gig() {
                 </span>
               </div>
               <div className="gig-other-feature">
-                <span className="gig-features">
-                  <img src="/img/greencheck.png" alt="" /> Prompt writing{" "}
+
+              {gig.features &&
+                gig.features.map((feature) => (
+                  <span className="gig-features">
+                  <img src="/img/greencheck.png" alt="" /> {feature}
                 </span>
-                <span className="gig-features">
-                  <img src="/img/greencheck.png" alt="" /> Prompt writing{" "}
-                </span>
-                <span className="gig-features">
-                  <img src="/img/greencheck.png" alt="" /> Prompt writing{" "}
-                </span>
+                ))}
               </div>
             </div>
             <div>
-              <form>
-                <div className="btn-grp">
-                  <Link to={`/pay/${gig._id}`}>
-                  <button className="btn btn-dark"> Continue </button>
-                  </Link>
-                </div>
-              </form>
+              {!currentUser?.isSeller ? (
+                <form>
+                  <div className="btn-grp">
+                    <Link className="btn btn-primary" to={`/pay/${gig._id}`}>
+                      Continue
+                    </Link>
+                  </div>
+                </form>
+              ) : (
+                <></>
+              )}
             </div>
           </section>
         </section>

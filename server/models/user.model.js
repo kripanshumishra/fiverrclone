@@ -35,6 +35,10 @@ const userSchema = new Schema(
       type: Boolean,
       default: false,
     },
+    total_orders:{
+      type:Number, 
+      default: 0 
+    }
   },
   {
     timestamps: true,

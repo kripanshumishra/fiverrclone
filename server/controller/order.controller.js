@@ -8,6 +8,7 @@
 const createError = require("../utils/createError");
 const Order = require("../models/order.model");
 const Gig = require("../models/gig.model");
+const User = require( "../models/user.model" ) ; 
 const Stripe = require( "stripe" ) ; 
 
 
@@ -73,6 +74,11 @@ const confirmOrder = async (req, res, next) => {
         },
       }
     );
+    await User.findByIdAndUpdate(orders.seller , {
+      $inc : {
+        total_orders : 1
+      }
+    })
 
     res.status(200).send("Order has been confirmed.");
   } catch (err) {

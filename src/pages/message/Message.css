@@ -2,7 +2,6 @@
     max-width: 28em;
     margin: auto;
     height: calc(100vh - var( --top-nav-height ));
-    /* margin-top: var(--top-nav-height); */
     box-sizing: border-box;
     border: 2px solid red ;
     display: flex;
@@ -29,7 +28,6 @@
     background-color: blue !important;
     color: #fff;
     border: 0.5em;
-    
     border-top-right-radius: 0px!important;
     border-bottom-right-radius: 0.65em;
     border-bottom-left-radius: 0!important;
