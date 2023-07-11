@@ -7,8 +7,11 @@ import {
   handleDeliveryChange,
   handleGigs,
   handlePriceChange,
+  handleDrawerState
 } from "./utils";
 import { mainCategories } from "../../../data/data";
+import { useRef } from "react";
+import useClickOutside from "../../hooks/useClickOutside";
 
 export default function Gigs() {
   const [gigs, setGigs] = useState([]);
@@ -17,6 +20,9 @@ export default function Gigs() {
     budget: false,
     delivery: false,
   });
+  const categoryRef = useRef();
+  const budgetRef = useRef();
+  const deliveryRef = useRef();
   const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation();
   useEffect(() => {
@@ -28,19 +34,15 @@ export default function Gigs() {
       isMounted = false;
     };
   }, [searchParams]);
-  const handleDrawerState = (e) => {
-    const name = e.target.name;
-    const val = drawerOpen[name];
-    const newState = {};
-    Object.keys(drawerOpen).forEach((v) => {
-      newState[v] = false ;
-    });
-    newState[name] = !val;
-    setDrawerOpen((pre) => {
-      return newState;
-    });
-  };
-
+  useClickOutside(categoryRef, () => {
+    setDrawerOpen({ ...drawerOpen, categories: false });
+  });
+  useClickOutside(budgetRef, () => {
+    setDrawerOpen({ ...drawerOpen, budget: false });
+  });
+  useClickOutside(deliveryRef, () => {
+    setDrawerOpen({ ...drawerOpen, delivery: false });
+  });
   return (
     <section className="container inline-spacing">
       <header className="gig-page-header">
@@ -55,37 +57,45 @@ export default function Gigs() {
             } `}
             aria-controls="category-region"
             name="categories"
-            onClick={handleDrawerState}
+            onClick={(e) => {
+              handleDrawerState(e.target.name, setDrawerOpen , drawerOpen);
+              e.stopPropagation();
+            }}
           >
             Categories
           </button>
-          <ul
-            id="category-region"
-            className={` link-drawer ${
-              drawerOpen["categories"] ? "link-drawer-isopen" : ""
-            } `}
-          >
-            {mainCategories.map((cat, ind) => {
-              return (
-                <li key={ind}>
-                  <label>
-                    <input
-                      onChange={(e) => {
-                        handleCategoryChange(e, setSearchParams);
-                      }}
-                      checked={
-                        searchParams.get("category") === cat.name ? true : false
-                      }
-                      type="radio"
-                      name="category"
-                      value={cat.name}
-                    />
-                    {cat.name}
-                  </label>{" "}
-                </li>
-              );
-            })}
-          </ul>
+          {drawerOpen["categories"] && (
+            <ul
+              ref={categoryRef}
+              id="category-region"
+              className={` link-drawer ${
+                drawerOpen["categories"] ? "link-drawer-isopen" : ""
+              } `}
+            >
+              {mainCategories.map((cat, ind) => {
+                return (
+                  <li key={ind}>
+                    <label>
+                      <input
+                        onChange={(e) => {
+                          handleCategoryChange(e, setSearchParams);
+                        }}
+                        checked={
+                          searchParams.get("category") === cat.name
+                            ? true
+                            : false
+                        }
+                        type="radio"
+                        name="category"
+                        value={cat.name}
+                      />
+                      {cat.name}
+                    </label>{" "}
+                  </li>
+                );
+              })}
+            </ul>
+          )}
         </div>
         <div className="gig-filters-wrap">
           <button
@@ -93,48 +103,57 @@ export default function Gigs() {
               drawerOpen["budget"] ? "gig-filter__btn--active" : ""
             }`}
             aria-controls="budget-region"
-            onClick={handleDrawerState}
+            onClick={(e) => {
+              handleDrawerState(e.target.name, setDrawerOpen , drawerOpen);
+
+              e.stopPropagation();
+            }}
             name="budget"
           >
             Budget
           </button>
-          <div
-            className={`link-drawer ${drawerOpen["budget"] ? "link-drawer-isopen" :"" } `}
-            role="region"
-            id="budget-region"
-          >
-            <form
-              className="filter-price-region"
-              onSubmit={(e) => {
-                handlePriceChange(e, setSearchParams);
-              }}
+          {drawerOpen["budget"] && (
+            <div
+              ref={budgetRef}
+              className={`link-drawer ${
+                drawerOpen["budget"] ? "link-drawer-isopen" : ""
+              } `}
+              role="region"
+              id="budget-region"
             >
-              <div>
+              <form
+                className="filter-price-region"
+                onSubmit={(e) => {
+                  handlePriceChange(e, setSearchParams);
+                }}
+              >
                 <div>
-                  <label htmlFor="minprice">Min price</label>
-                  <input
-                    type="Number"
-                    id="minprice"
-                    placeholder="Any"
-                    name="minprice"
-                  />
+                  <div>
+                    <label htmlFor="minprice">Min price</label>
+                    <input
+                      type="Number"
+                      id="minprice"
+                      placeholder="Any"
+                      name="minprice"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="maxprice">Max price</label>
+                    <input
+                      type="Number"
+                      id="maxprice"
+                      placeholder="Any"
+                      name="maxprice"
+                    />
+                  </div>
                 </div>
 
-                <div>
-                  <label htmlFor="maxprice">Max price</label>
-                  <input
-                    type="Number"
-                    id="maxprice"
-                    placeholder="Any"
-                    name="maxprice"
-                  />
-                </div>
-              </div>
-
-              <hr aria-hidden="true" />
-              <input type="submit" className="btn btn-dark" />
-            </form>
-          </div>
+                <hr aria-hidden="true" />
+                <input type="submit" className="btn btn-dark" />
+              </form>
+            </div>
+          )}
         </div>
         <div className="gig-filters-wrap">
           <button
@@ -143,62 +162,87 @@ export default function Gigs() {
             }`}
             aria-controls="delivery-region"
             name="delivery"
-            onClick={handleDrawerState}
+            onClick={(e) => {
+              handleDrawerState(e.target.name, setDrawerOpen , drawerOpen);
+              e.stopPropagation();
+            }}
           >
             Delivery
           </button>
-          <ul
-            className={`link-drawer ${drawerOpen["delivery"] ? "link-drawer-isopen" :"" } `}
-            id="delivery-region"
-          >
-            <li>
-              {" "}
-              <label>
+          {drawerOpen["delivery"] && (
+            <ul
+              ref={deliveryRef}
+              className={`link-drawer ${
+                drawerOpen["delivery"] ? "link-drawer-isopen" : ""
+              } `}
+              id="delivery-region"
+            >
+              <li>
+                <label>
+                  <input
+                    onChange={(e) => {
+                      handleDeliveryChange(e, setSearchParams);
+                    }}
+                    checked={
+                      searchParams.get("delivery") === "1" ? true : false
+                    }
+                    type="radio"
+                    name="days"
+                    value="1"
+                  />
+                  1 day
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input
+                    onChange={(e) => {
+                      handleDeliveryChange(e, setSearchParams);
+                    }}
+                    checked={
+                      searchParams.get("delivery") === "2" ? true : false
+                    }
+                    type="radio"
+                    name="days"
+                    value="2"
+                  />{" "}
+                  2 days{" "}
+                </label>{" "}
+              </li>
+              <li>
                 {" "}
-                <input
-                  onChange={(e) => {
-                    handleDeliveryChange(e, setSearchParams);
-                  }}
-                  checked={searchParams.get("delivery") === "1" ? true : false}
-                  type="radio"
-                  name="days"
-                  value="1"
-                />{" "}
-                1 day{" "}
-              </label>{" "}
-            </li>
-            <li>
-              <label>
-                <input
-                  onChange={(e) => {
-                    handleDeliveryChange(e, setSearchParams);
-                  }}
-                  checked={searchParams.get("delivery") === "2" ? true : false}
-                  type="radio"
-                  name="days"
-                  value="2"
-                />{" "}
-                2 days{" "}
-              </label>{" "}
-            </li>
-            <li>
-              {" "}
-              <label>
-                {" "}
-                <input
-                  onChange={(e) => {
-                    handleDeliveryChange(e, setSearchParams);
-                  }}
-                  checked={searchParams.get("delivery") === "3" ? true : false}
-                  type="radio"
-                  name="days"
-                  value="3"
-                />{" "}
-                3 days{" "}
-              </label>{" "}
-            </li>
-          </ul>
+                <label>
+                  {" "}
+                  <input
+                    onChange={(e) => {
+                      handleDeliveryChange(e, setSearchParams);
+                    }}
+                    checked={
+                      searchParams.get("delivery") === "3" ? true : false
+                    }
+                    type="radio"
+                    name="days"
+                    value="3"
+                  />{" "}
+                  3 days{" "}
+                </label>{" "}
+              </li>
+            </ul>
+          )}
         </div>
+        {
+          searchParams && searchParams.size
+          ?
+          <div className="gig-filters-wrap">
+          <button  onClick={ (  ) =>{
+            setSearchParams( {  } )
+          } } className="btn gig-filter__btn btn-primary">
+            reset filters
+          </button>
+    </div>
+    :
+    <></>
+        }
       </div>
       <div className="gigs-wrapper">
         {gigs.map((gig, ind) => {

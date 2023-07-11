@@ -11,7 +11,10 @@ export default function Home() {
       <Featured />
       <TrustedBy />
       <section className="container popular-services">
-        <h2 className="popular-services__heading">Popular Services</h2>
+        <div style={{display:"flex" , gap:"2em"}}>
+        <h2 className="popular-services__heading">Popular Services  </h2>
+        <Link style={{textDecoration:"underline"}} to={"/gigs"}> {"Explore more > "}</Link> 
+        </div>
         <Slide desktop={4} tablet={3}>
           {popularCards.map((card, i) => {
             return (
@@ -67,7 +70,12 @@ export default function Home() {
                       anytime, anywhere.
                     </p>
                   </div>
+                  <div>
+                  <Link to={"/gigs"} className="btn btn-dark"> {"Explore ->"}</Link>
+                  </div>
                 </div>
+                  
+
               </div>
               <div className="home-selling__main--right">
                 <img aria-hidden="true"

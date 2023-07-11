@@ -83,8 +83,14 @@ function Navbar() {
                       } `}
                       id="user-profile-nav"
                     >
-                      <li>Profile</li>
+                      <li><Link to = { "/orders"}>my Orders </Link></li>
                       <li><Link to={"/messages"}> messages </Link></li>
+                      {currentUser && currentUser.isSeller ? <>
+                        <li><Link to={"/mygigs"}> My Gigs  </Link></li>
+                        <li><Link to={"/add"}> Add Gigs  </Link></li>
+                      
+                      </> : <></>}
+
                       <hr aria-hidden="true" />
                       <li className="btn-grp logout-container">
                         <button

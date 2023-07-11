@@ -4,6 +4,7 @@ import useMultipageForm from "../../hooks/useMultipageForm";
 import "./Add.css";
 import Popup from "../../component/popup/Popup";
 import GigFeatureAndKeywords from "./component/GigFeatureAndKeywords";
+import GigImageUpload from "./component/GigImageUpload";
 
 import uploadimg from "../../utils/uploadimg";
 
@@ -145,27 +146,7 @@ const GigFeatures = ({ handleInput }) => {
   );
 };
 
-const GigImageUpload = ({ handleImage }) => {
-  return (
-    <fieldset className="gig-field-wrapper gig-file">
-      <legend>Upload the files</legend>
-      <div>
-        <label htmlFor="gigcover">Cover Image</label>
-        <input type="file" id="gigcover" name="cover" />
-      </div>
-      <div>
-        <label htmlFor="gigdoc">Upload Images</label>
-        <input
-          type="file"
-          multiple
-          id="gigdoc"
-          name="images"
-          onChange={handleImage}
-        />
-      </div>
-    </fieldset>
-  );
-};
+
 
 export default function Add() {
   const [state, dispatch] = useReducer(gigReducer, INITIAL_STATE);
@@ -253,7 +234,6 @@ export default function Add() {
   const [currentPage, totalPage, isLastPage, previous, next] = useMultipageForm(
     steps.length
   );
-
   return (
     <section className="gig-form-page">
       <div className="container gig-form-container">

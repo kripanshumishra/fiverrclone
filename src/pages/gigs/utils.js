@@ -20,7 +20,6 @@ const handleDeliveryChange = ( e ,setSearchParams ) =>{
     try {
       const res = await makeRequest.get( "/gigs/"+location.search )
       return res
-      // setGigs( res.data )
       
     } catch (error) {
       console.log( "handleGigs()" , error );
@@ -55,8 +54,20 @@ const handleDeliveryChange = ( e ,setSearchParams ) =>{
       }) ;
     }
   };
+  
+  function handleDrawerState(name, setDrawerOpen , drawerState) {
+    const newState = {};
+    Object.keys(drawerState).forEach((key) => {
+      newState[key] = false;
+    });
+    const val = drawerState[name];
+    newState[name] = !val;
+    setDrawerOpen((pre) => newState);
+    return;
+  }
 
-  export {handleCategoryChange , handleDeliveryChange , handleGigs , handlePriceChange};
+
+  export {handleCategoryChange , handleDeliveryChange , handleGigs , handlePriceChange , handleDrawerState};
 
 
 
