@@ -20,10 +20,13 @@ export default function Home() {
             return (
               <div className="popular-services__slider" key={i} >
                 <header>
+                <Link to={`/gigs?category=${card?.title}`} >
                   <h3>{card.title}</h3>
                   <p>{card.description}</p>
+                  </Link>
                 </header>
                 <img src={card.img} alt={card.description} />
+                
               </div>
             );
           })}

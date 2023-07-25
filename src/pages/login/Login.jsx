@@ -1,13 +1,17 @@
-import { useContext, useRef } from "react";
+import { useContext, useRef , useState} from "react";
 import "./Login.css";
 import makeRequest from "../../utils/makeRequest";
 import { Link, Navigate, useNavigate, useSearchParams } from "react-router-dom";
 import { authContext } from "../../context/authProvider/authProvider";
+import Popup from "../../component/popup/Popup";
+
+
 export default function Login() {
   const { authData, setAuthData } = useContext(authContext);
   const formRef = useRef();
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
+  const [mainError, setMainError] = useState("");
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
@@ -19,12 +23,17 @@ export default function Login() {
       const res = await makeRequest.post("/auth/login", data);
       setAuthData(res.data);
       let redirect_uri = "/";
+      console.log( res  )
       if (searchParams.get("redirect") && searchParams.get("redirect").length) {
         redirect_uri = searchParams.get("redirect");
       }
       navigate(redirect_uri);
     } catch (error) {
       console.log("handleLogin()", error);
+      setMainError(error?.response?.data.msg || "something went wrong");
+        setTimeout(() => {
+          setMainError("");
+        }, 5500);
     }
   };
   if (authData && Object.keys(authData).length) {
@@ -37,11 +46,16 @@ export default function Login() {
   return (
     <section className="login-page-wrapper inline-spacing">
       <div className="container content-wrapper">
+      {mainError && mainError.length ? (
+              <Popup message={mainError} type={"alert"} />
+            ) : (
+              <></>
+            )}
         <div className="content-subwrapper">
           <div className="inline-spacing login-form">
             <header>
               <h2>Sign in to your account</h2>
-              <p>Don't have and account ?</p>
+              {/* <p>Don't have an account ?</p> */}
             </header>
             <form ref={formRef} onSubmit={handleLogin}>
               <div className="input-wrapper">

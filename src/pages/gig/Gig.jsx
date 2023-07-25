@@ -224,13 +224,14 @@ export default function Gig() {
             </div>
             
             {
-              currentUser?.isSeller
+              currentUser?.isSeller === false
               ?
-              <></>
-              :
               <div>
               <ReviewForm gigId={id} setReviews = {setReviews} />
             </div>
+              :
+              <></>
+              
               
             }
             <div>

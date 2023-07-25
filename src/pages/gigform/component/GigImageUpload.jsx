@@ -9,8 +9,7 @@ const GigImageUpload = ({ handleImage }) => {
         if ( e.target.files.length > 0 ) {
             setTimeout( ()=>{
                 setError( "" )
-            } , 5000); 
-            return   
+            } , 5000);  
 
         }
         handleImage(e)

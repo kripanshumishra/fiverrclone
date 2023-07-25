@@ -1,6 +1,17 @@
+import { useRef } from "react"
 import "./Featured.css"
+import { useNavigate } from "react-router-dom"
 export default function Featured() {
+  const navigate = useNavigate(  )
 const popular = [ "Website Design" , "Wordpress" , "logo design" , "ai" ]
+const formref = useRef()
+const handleSearch  = ( e ) =>{
+  e.preventDefault()
+  const formdata = new FormData( formref.current );
+  console.log( formdata , formdata.get("search") , {...Object.fromEntries( formdata )} )
+  formref.current.reset()
+  navigate( "/gigs?search="+formdata.get("search") )
+}
   return (
     <div className="home-header-wrapper">
       <div className="container home-header inline-spacing">
@@ -12,7 +23,7 @@ const popular = [ "Website Design" , "Wordpress" , "logo design" , "ai" ]
           </h1>
         </header>
         <div>
-          <form className="header-form">
+          <form onSubmit={handleSearch} ref={formref} className="header-form">
             <label className="visually-hidden" htmlFor="service-search-box">
               search for any service
             </label>
@@ -20,9 +31,14 @@ const popular = [ "Website Design" , "Wordpress" , "logo design" , "ai" ]
               id="service-search-box"
               type="search"
               placeholder="eg: Website Design"
+              required={ true }
+              name="search"
+              // onChange={( e ) =>{
+              //   setSearchVal( e.target.value )
+              // }}
             />
-            <button aria-label="submit button">
-              <img aria-hidden="true" src="/img/search.png" alt="" />
+            <button type="submit" aria-label="submit button">
+              <img aria-hidden={true} src="/img/search.png" alt="" />
             </button>
           </form>
         </div>

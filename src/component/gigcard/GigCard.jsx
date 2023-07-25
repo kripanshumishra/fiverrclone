@@ -20,7 +20,7 @@ export default function GigCard({gig}) {
             <span className="visually-hidden">username</span> { gig?.user?.username ? gig.user.username : "user" }
           </h3>
         </div>
-        <p> { gig?.desc} </p>
+        <p> { gig?.title} </p>
         <div className="gigcard-ratings" >
           <span aria-label="rating">
             <span className="gigcard-star" aria-hidden="true">

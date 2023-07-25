@@ -4,7 +4,6 @@ import  newRequest from "../../utils/makeRequest";
 export default function Success() {
     const navigate = useNavigate();
     const [searchParams, setSearchParams] = useSearchParams();
-    console.log( searchParams , "searchParams" )
     const payment_intent = searchParams.get( "payment_intent" ) ;
     const makeSuccessRequest = async () =>{
         try {

@@ -7,7 +7,7 @@ import {
   handleDeliveryChange,
   handleGigs,
   handlePriceChange,
-  handleDrawerState
+  handleDrawerState,
 } from "./utils";
 import { mainCategories } from "../../../data/data";
 import { useRef } from "react";
@@ -58,7 +58,7 @@ export default function Gigs() {
             aria-controls="category-region"
             name="categories"
             onClick={(e) => {
-              handleDrawerState(e.target.name, setDrawerOpen , drawerOpen);
+              handleDrawerState(e.target.name, setDrawerOpen, drawerOpen);
               e.stopPropagation();
             }}
           >
@@ -90,7 +90,7 @@ export default function Gigs() {
                         value={cat.name}
                       />
                       {cat.name}
-                    </label>{" "}
+                    </label>
                   </li>
                 );
               })}
@@ -104,7 +104,7 @@ export default function Gigs() {
             }`}
             aria-controls="budget-region"
             onClick={(e) => {
-              handleDrawerState(e.target.name, setDrawerOpen , drawerOpen);
+              handleDrawerState(e.target.name, setDrawerOpen, drawerOpen);
 
               e.stopPropagation();
             }}
@@ -163,7 +163,7 @@ export default function Gigs() {
             aria-controls="delivery-region"
             name="delivery"
             onClick={(e) => {
-              handleDrawerState(e.target.name, setDrawerOpen , drawerOpen);
+              handleDrawerState(e.target.name, setDrawerOpen, drawerOpen);
               e.stopPropagation();
             }}
           >
@@ -205,14 +205,12 @@ export default function Gigs() {
                     type="radio"
                     name="days"
                     value="2"
-                  />{" "}
-                  2 days{" "}
-                </label>{" "}
+                  />
+                  2 days
+                </label>
               </li>
               <li>
-                {" "}
                 <label>
-                  {" "}
                   <input
                     onChange={(e) => {
                       handleDeliveryChange(e, setSearchParams);
@@ -223,26 +221,43 @@ export default function Gigs() {
                     type="radio"
                     name="days"
                     value="3"
-                  />{" "}
-                  3 days{" "}
-                </label>{" "}
+                  />
+                  3 days
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input
+                    onChange={(e) => {
+                      handleDeliveryChange(e, setSearchParams);
+                    }}
+                    checked={
+                      searchParams.get("delivery") === "4" ? true : false
+                    }
+                    type="radio"
+                    name="days"
+                    value="4"
+                  />
+                  4 days
+                </label>
               </li>
             </ul>
           )}
         </div>
-        {
-          searchParams && searchParams.size
-          ?
+        {searchParams && searchParams.size ? (
           <div className="gig-filters-wrap">
-          <button  onClick={ (  ) =>{
-            setSearchParams( {  } )
-          } } className="btn gig-filter__btn btn-primary">
-            reset filters
-          </button>
-    </div>
-    :
-    <></>
-        }
+            <button
+              onClick={() => {
+                setSearchParams({});
+              }}
+              className="btn gig-filter__btn btn-primary"
+            >
+              reset filters
+            </button>
+          </div>
+        ) : (
+          <></>
+        )}
       </div>
       <div className="gigs-wrapper">
         {gigs.map((gig, ind) => {

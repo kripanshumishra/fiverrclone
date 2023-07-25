@@ -1,51 +1,33 @@
 export const popularCards = [
   {
     card_id: 1,
-    title: "Logo Design",
+    title: "logo design",
     description: "Build yor brand",
-    img: "https://images.pexels.com/photos/11295165/pexels-photo-11295165.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
+    img: "/img/catimages/logodesign.webp",
   },
     {
       card_id: 2,
-      title: "AI Artists",
+      title: "ai",
       description: "Add talent to AI",
-      img: "https://images.pexels.com/photos/7532110/pexels-photo-7532110.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
+      img: "/img/catimages/ai.webp",
     },
     {
       card_id: 3,
-      title: "Voice Over",
+      title: "video animation",
       description: "Share your message",
-      img: "https://images.pexels.com/photos/7608079/pexels-photo-7608079.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
-    },
-    {
-      card_id: 4,
-      title: "Vcard_ideo Explainer",
-      description: "Engage your audience",
-      img: "https://images.pexels.com/photos/13388047/pexels-photo-13388047.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
-    },
-    {
-      card_id: 5,
-      title: "WordPress",
-      description: "Customize your site",
-      img: "https://images.pexels.com/photos/4371669/pexels-photo-4371669.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
+      img: "/img/catimages/animation.jpeg",
     },
     {
       card_id: 6,
-      title: "Social Media",
+      title: "social media",
       description: "Reach more customers",
-      img: "https://images.pexels.com/photos/11378899/pexels-photo-11378899.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
+      img: "/img/catimages/social.webp",
     },
     {
       card_id: 7,
-      title: "SEO",
+      title: "seo",
       description: "Unlock growth online",
-      img: "https://images.pexels.com/photos/4820241/pexels-photo-4820241.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
-    },
-    {
-      card_id: 8,
-      title: "Illustration",
-      description: "Color you dreams",
-      img: "https://images.pexels.com/photos/15032623/pexels-photo-15032623.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
+      img: "/img/catimages/seo.webp",
     },
   ];
 
@@ -60,37 +42,53 @@ export const mainCategories = [
     img:"https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/online-marketing.74e221b.svg"
 
   },
-  {
-    name:'writing translation',
-    img:"https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/writing-translation.32ebe2e.svg"    
+  // {
+  //   name:'writing translation',
+  //   img:"https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/writing-translation.32ebe2e.svg"    
 
-  },
+  // },
   {
     name:'video animation',
     img:"https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/video-animation.f0d9d71.svg"    
   },
-  {
-    name:'music audio',
-    img:"https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/music-audio.320af20.svg" 
-  },
+  // {
+  //   name:'music audio',
+  //   img:"https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/music-audio.320af20.svg" 
+  // },
   {
     name:'programming tech ',
     img:"https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/programming.9362366.svg" 
   },
-  {
-    name:'business',
-    img:"https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/business.bbdf319.svg" 
-  },
-  {
-    name:'lifestyle',
-    img:"https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/lifestyle.745b575.svg" 
-  },
+  // {
+  //   name:'business',
+  //   img:"https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/business.bbdf319.svg" 
+  // },
+  // {
+  //   name:'lifestyle',
+  //   img:"https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/lifestyle.745b575.svg" 
+  // },
   {
     name:'data',
     img:"https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/data.718910f.svg" 
   },
+  // {
+  //   name:'photography',
+  //   img:"https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/photography.01cf943.svg" 
+  // },
   {
-    name:'photography',
+    name:'ai',
+    img:"https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/photography.01cf943.svg" 
+  },
+  {
+    name:'logo design',
+    img:"https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/photography.01cf943.svg" 
+  },
+  {
+    name:'social media',
+    img:"https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/photography.01cf943.svg" 
+  },
+  {
+    name:'seo',
     img:"https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/photography.01cf943.svg" 
   },
 ]

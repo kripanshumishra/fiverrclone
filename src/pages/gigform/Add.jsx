@@ -179,6 +179,15 @@ export default function Add() {
       }, 1000);
     }
     // image form page
+    if ( currentPage === 2 ){
+      try {
+        await handleImageSubmit();
+      } catch (error) {
+        console.log("error", error);
+      } finally {
+        setIsSubmitting(false);
+      }
+    }
     if (currentPage === totalPage - 1) {
       if (!files.length) {
         setMainMessage((pre) => {
@@ -191,13 +200,7 @@ export default function Add() {
         }, 5500);
         return;
       }
-      try {
-        await handleImageSubmit();
-      } catch (error) {
-        console.log("error", error);
-      } finally {
-        setIsSubmitting(false);
-      }
+      
     }
     next();
   };

@@ -20,11 +20,13 @@ make alert component    ---> done
 integrate order with frontend --> done 
 add missing fields in add gigs ---> done
 make mygig page     -->done
+deploy api's and frontend  ---> done 
 
 
 todo today :
+    add some data in database 
+    add links in carausel
     make all pages accessible to buyer and seller from home page 
-    deploy api's and frontend 
 
 todo tommorow ( till 4-5 pm  )
 make gigs page categories more interactive by adding dynamic categories and give option to remove categories  

@@ -72,8 +72,6 @@ const SecondStep = () => {
             type="checkbox"
             id="isSeller"
             aria-describedby="error-seller-region"
-            aria-required="true"
-            required={true}
             name="isSeller"
           />
           <span aria-live="true" id="error-seller-region"></span>
@@ -150,7 +148,7 @@ export default function Register() {
         );
         setMainError(error?.response?.data.msg || "something went wrong");
         setTimeout(() => {
-          setMainError(error?.response?.data.msg || "something went wrong");
+          setMainError("");
         }, 5500);
       }
     } else {
@@ -198,7 +196,9 @@ export default function Register() {
                   previous
                 </button>
                 <button className="btn btn-primary " type="submit">
-                  next
+                  {
+                    isLastPage() ? "submit" : "next"
+                  }
                 </button>
               </div>
 
